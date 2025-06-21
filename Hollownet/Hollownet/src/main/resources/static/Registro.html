@@ -5,183 +5,118 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this temp
 -->
 
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Registro - HollowNet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-      
-      
-    body {
-      margin: 0;
-      padding-top: 110px;
-      background-color: #1D124D;
-      font-family: 'Courier New', monospace;
-      color: #FFFFFF;
-      text-align: center;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>Registro</title>
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <style>
+            body {
+                margin: 0;
+                background-color: #1a0b47;
+                color: #1a0b47;
+                font-family: 'Segoe UI', sans-serif;
+            }
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #621FBE;
-      color: white;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      z-index: 999;
-      flex-wrap: wrap;
-    }
+            .registro-box {
+                max-width: 400px;
+                margin: 100px auto;
+                background-color: white;
+                padding: 30px;
+                border-radius: 10px;
+            }
 
-    .logo {
-      height: 70px;
-      margin-right: 12px;
-    }
+            .registro-box h5 {
+                text-align: center;
+                margin-bottom: 24px;
+            }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      min-width: 250px;
-    }
+            .registro-box label {
+                font-size: 0.9rem;
+                margin-bottom: 5px;
+            }
 
-    .site-title {
-      margin-left: 10px;
-      font-size: 2em;
-      font-family: 'Press Start 2P', monospace;
-      white-space: nowrap;
-    }
+            .registro-box input {
+                width: 100%;
+                padding: 10px;
+                margin-bottom: 15px;
+                border-radius: 6px;
+                border: 1px solid #ccc;
+                font-family: 'Segoe UI', sans-serif;
+                font-size: 0.9rem;
+            }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      flex: 3;
-      padding-top: 6px;
-    }
+            .btn-primary {
+                background-color: #1a0b47;
+                border: none;
+            }
 
-    nav a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
+            .btn-primary:hover {
+                background-color: #14073a;
+            }
 
-    nav a:hover {
-      background-color: #320D6D;
-      color: #A584E8;
-    }
+            .login-link {
+                font-size: 0.8rem;
+                text-align: center;
+                margin-top: 10px;
+            }
 
-    main {
-      padding: 40px 20px;
-    }
+            .login-link a {
+                color: #1a0b47;
+                text-decoration: none;
+                font-weight: 500;
+            }
 
-    
-    
-    
-    .registro-box {
-      background-color: #320D6D;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 400px;
-      padding: 30px;
-      margin: 0 auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      text-align: left;
-    }
+            .login-link a:hover {
+                text-decoration: underline;
+            }
 
-    .registro-box h2 {
-      text-align: center;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      color: #A584E8;
-    }
+            .logo {
+                position: absolute;
+                top: 20px;
+                left: 20px;
+                display: flex;
+                align-items: center;
+                gap: 10px;
+                color: white;
+            }
 
-    
-    .registro-box label {
-      display: block;
-      margin-bottom: 5px;
-      font-size: 0.9em;
-      color: #f0f0f0;
-    }
+            .logo img {
+                height: 30px;
+            }
+        </style>
+    </head>
+    <body>
 
-    .registro-box input {
-      width: 100%;
-      padding: 10px;
-      margin-bottom: 15px;
-      border-radius: 6px;
-      border: none;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      background-color: #621FBE;
-      color: #ffffff;
-    }
+        <div class="logo">
+            <a href="index.html" style="display: flex; align-items: center; color: white; text-decoration: none;">
+                <img src="Robot.png" alt="HollowNet Logo">
+                <h3 style="margin: 0;">HollowNet</h3>
+            </a>
+        </div>
 
-    .registro-box button {
-      width: 100%;
-      padding: 10px;
-      border: none;
-      border-radius: 6px;
-      background-color: #A584E8;
-      color: white;
-      font-weight: bold;
-      font-family: 'Courier New', monospace;
-      font-size: 0.9em;
-      cursor: pointer;
-      transition: background-color 0.3s ease;
-    }
+        <div class="registro-box shadow">
+            <h5>Registro</h5>
+            <form>
+                <div class="mb-3">
+                    <label for="nombre" class="form-label">Nombre</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required>
+                </div>
+                <div class="mb-3">
+                    <label for="correo" class="form-label">Correo</label>
+                    <input type="email" id="correo" name="correo" class="form-control" placeholder="correo@ejemplo.com" required>
+                </div>
+                <div class="mb-3">
+                    <label for="clave" class="form-label">Contraseña</label>
+                    <input type="password" id="clave" name="clave" class="form-control" placeholder="********" required>
+                </div>
+                <button type="submit" class="btn btn-primary w-100">Crear cuenta</button>
+            </form>
 
-    
-    .registro-box button:hover {
-      background-color: #7b4ccc;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-left">
-      <a href="index.html">
-        <img src="Robot.png" alt="HollowNet Logo" class="logo">
-      </a>
-      <h1 class="site-title">HollowNet</h1>
-    </div>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="noticias.html">Noticias</a>
-      <a href="Lanzamientos.html">Lanzamientos</a>
-      <a href="Reviews.html">Reviews</a>
-      <a href="Contacto.html">Contacto</a>
-      <a href="Registro.html">Registro</a>
-      <a href="Login.html">Login</a>
-      <a href="Acerca.html">Acerca</a>
-    </nav>
-  </header>
+            <div class="login-link mt-3">
+                ¿Ya tienes una cuenta? <a href="NewLogin.html">Iniciar Sesión</a>
+            </div>
+        </div>
 
-  <main>
-    <div class="registro-box">
-      <h2>Registro</h2>
-      <form>
-        <label for="nombre">Nombre</label>
-        <input type="text" id="nombre" name="nombre" required>
-
-        <label for="correo">Correo</label>
-        <input type="email" id="correo" name="correo" required>
-
-        <label for="clave">Contrasena</label>
-        <input type="password" id="clave" name="clave" required>
-
-        <button type="submit">Crear cuenta</button>
-      </form>
-    </div>
-  </main>
-</body>
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    </body>
 </html>
-
