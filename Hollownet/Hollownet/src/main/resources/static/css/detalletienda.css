@@ -1,0 +1,106 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 22, 2025, 1:31:30 PM
+    Author     : Vargas Caleb
+*/
+
+body {
+  background-color: #130344;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 110px;
+  text-align: center;
+}
+
+.detalle-container {
+  max-width: 1000px;
+  margin: auto;
+  padding: 30px;
+}
+
+.detalle-header {
+  display: flex;
+  flex-wrap: wrap;
+  background: white;
+  color: #130344;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.4);
+  padding: 20px;
+  gap: 20px;
+  align-items: center;
+}
+
+.portada {
+  width: 300px;
+  border-radius: 10px;
+}
+
+.info {
+  flex: 1;
+  text-align: left;
+}
+
+.info h2 {
+  margin-top: 0;
+  color: #621FBE;
+}
+
+.categoria, .fecha, .descripcion {
+  margin-bottom: 10px;
+}
+
+.precio {
+  font-size: 1.5em;
+  font-weight: bold;
+  margin-top: 10px;
+}
+
+.btn-comprar {
+  padding: 10px 20px;
+  background-color: #621FBE;
+  color: white;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.btn-comprar:hover {
+  background-color: #4b16a3;
+}
+
+/* Galería */
+.galeria {
+  margin-top: 40px;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+
+.galeria img {
+  width: 200px;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.3);
+}
+
+/* Reseñas */
+.reviews {
+  margin-top: 40px;
+  text-align: left;
+}
+
+.reviews h3 {
+  color: #A584E8;
+}
+
+.comentario {
+  background-color: #2c0f6e;
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+  color: white;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+}

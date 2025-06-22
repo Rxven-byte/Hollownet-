@@ -1,0 +1,194 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 22, 2025, 12:21:43 PM
+    Author     : Vargas Caleb
+*/
+
+.slider-container {
+  background: white;
+  border-radius: 16px;
+  max-width: 750px;
+  margin: 40px auto;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.5);
+}
+
+.slider {
+  position: relative;
+  width: 100%;
+  height: 400px;
+  overflow: hidden;
+  border-radius: 12px;
+  border: 3px solid #130344;
+}
+
+.slider img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.slider:hover img {
+  transform: scale(1.03);
+}
+
+.info {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  background: white;
+  color: #130344;
+  padding: 16px;
+  border-left: 5px solid #2c0f6e;
+  border-radius: 8px;
+  box-shadow: 0 0 12px rgba(0,0,0,0.3);
+  text-align: left;
+  width: 80%;
+  max-width: 300px;
+  font-size: 0.9em;
+}
+
+.info h2 {
+  margin: 0 0 8px;
+  font-size: 1.2em;
+}
+
+.info p {
+  margin: 4px 0;
+  font-weight: 500;
+}
+
+.slider-button {
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  background-color: rgba(19, 3, 68, 0.3);
+  color: #FFFFFF;
+  font-size: 26px;
+  padding: 10px;
+  border: none;
+  cursor: pointer;
+  z-index: 10;
+  border-radius: 50%;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.3s ease;
+}
+
+.slider:hover .slider-button {
+  opacity: 1;
+  pointer-events: all;
+}
+
+.prev {
+  left: -50px;
+}
+
+.next {
+  right: -50px;
+}
+
+.thumbnails {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+.thumbnail {
+  width: 60px;
+  height: 60px;
+  object-fit: cover;
+  cursor: pointer;
+  border: 2px solid #130344;
+  border-radius: 8px;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.thumbnail:hover {
+  transform: scale(1.15);
+  box-shadow: 0 0 12px rgba(19, 3, 68, 0.8);
+}
+
+
+/* binvenida */
+
+.hero {
+  min-height: 70vh;
+    background-image: url('../images/fondoc.jpg');
+
+ background-size: cover;           
+  background-position: center;     
+  background-repeat: no-repeat;    
+  background-attachment: fixed;    
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 60px 20px;
+  text-align: center;
+  overflow: hidden;
+}
+
+
+.hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  z-index: 1;
+}
+
+/* Contenido centrado encima del fondo */
+.hero-content.vertical {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 30px;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.hero-text {
+  max-width: 600px;
+  text-align: center;
+  color: white;
+}
+
+.hero h2 {
+  font-family: 'Press Start 2P', monospace;
+  font-size: 1.4em;
+  margin-bottom: 20px;
+  color: white;
+}
+
+.hero p {
+  font-size: 1em;
+  line-height: 1.6;
+  margin-bottom: 20px;
+  color: #ffffff;
+}
+
+.boton-ir-tienda {
+  display: inline-block;
+  margin-top: 10px;
+  padding: 12px 22px;
+  background-color: #621FBE;
+  color: white;
+  font-weight: bold;
+  border-radius: 6px;
+  text-decoration: none;
+  font-size: 14px;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-ir-tienda:hover {
+  background-color: #4b16a3;
+  transform: translateY(-2px);
+}

@@ -1,0 +1,128 @@
+/*
+Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
+Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to edit this template
+*/
+/* 
+    Created on : Jun 22, 2025, 12:21:36 PM
+    Author     : Vargas Caleb
+*/
+
+body {
+  margin: 0;
+  padding-top: 110px;
+  background-color: #130344;
+  color: #FFFFFF;
+  font-family: 'Segoe UI', sans-serif;
+  text-align: center;
+}
+
+header {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  background-color: #2c0f6e;
+  color: white;
+  padding: 14px 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  box-shadow: 0 6px 12px rgba(0,0,0,0.3);
+  z-index: 999;
+  flex-wrap: wrap;
+}
+
+.logo {
+  height: 60px;
+  margin-right: 12px;
+}
+
+.header-left {
+  display: flex;
+  align-items: center;
+  flex: 1;
+  min-width: 250px;
+}
+
+.site-title {
+  margin-left: 10px;
+  font-size: 1.2em;
+  font-family: 'Press Start 2P', monospace;
+  white-space: nowrap;
+  color: white;
+}
+
+nav {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 12px;
+  flex: 3;
+  padding-top: 6px;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 5px 8px;
+  border-radius: 4px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #1b054e;
+  color: #A584E8;
+}
+/* Header nav */
+
+nav.nav-principal {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  margin-top: 10px;
+}
+
+.nav-content {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+.menu-left, .menu-right {
+  display: flex;
+  gap: 14px;
+  align-items: center;
+}
+
+.menu-left a,
+.menu-right a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 6px 14px;
+  border-radius: 6px;
+  font-size: 14px;
+  transition: background-color 0.3s, transform 0.2s;
+}
+
+.menu-left a:hover {
+  background-color: #320D6D;
+  color: #A584E8;
+  transform: translateY(-2px);
+}
+
+.menu-right a {
+  background-color: #A584E8;
+  color: #130344;
+  font-weight: 600;
+}
+
+.menu-right a:hover {
+  background-color: #7b4ccc;
+  color: white;
+  transform: translateY(-2px);
+}

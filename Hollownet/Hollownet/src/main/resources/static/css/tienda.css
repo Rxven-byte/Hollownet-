@@ -1,0 +1,105 @@
+body {
+  background-color: #130344;
+  color: white;
+  font-family: 'Segoe UI', sans-serif;
+  padding-top: 110px;
+  text-align: center;
+}
+
+.destacado {
+  padding: 40px 20px;
+}
+
+.juego-destacado {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  align-items: center;
+  background: white;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
+  padding: 20px;
+  gap: 20px;
+  max-width: 800px;
+  margin: auto;
+  color: #130344;
+}
+
+.juego-destacado img {
+  width: 220px;
+  border-radius: 12px;
+}
+
+.juego-destacado .info {
+  max-width: 400px;
+  text-align: left;
+}
+
+.precio-descuento {
+  font-weight: bold;
+  font-size: 1.1em;
+}
+
+.oferta {
+  color: red;
+  margin-left: 10px;
+}
+
+.boton-comprar {
+  display: inline-block;
+  background-color: #621FBE;
+  color: white;
+  padding: 8px 16px;
+  border-radius: 6px;
+  margin-top: 10px;
+  font-weight: bold;
+  text-decoration: none;
+}
+
+.boton-comprar:hover {
+  background-color: #3a1391;
+}
+
+.catalogo {
+  padding: 40px 20px;
+}
+
+.catalogo h2 {
+  color: #A584E8;
+  margin-bottom: 30px;
+}
+
+.juegos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 20px;
+  max-width: 1000px;
+  margin: auto;
+}
+
+.juego-card {
+  background: white;
+  border-radius: 10px;
+  padding: 16px;
+  text-align: center;
+  color: #130344;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  transition: transform 0.2s ease;
+}
+
+.juego-card:hover {
+  transform: translateY(-5px);
+}
+
+.juego-card img {
+  width: 100%;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 6px;
+  margin-bottom: 10px;
+}
+
+.juego-card .precio {
+  font-weight: bold;
+  margin: 8px 0;
+}

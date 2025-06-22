@@ -1,157 +1,128 @@
-<!-- Comentario de prueba -->
-
-
+<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Inicio - HollowNet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding-top: 110px;
-      background-color: #1D124D;
-      font-family: 'Courier New', monospace;
-      color: #FFFFFF;
-      text-align: center;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>Inicio - HollowNet</title>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/slider.css">
+        <link rel="stylesheet" href="css/hero.css"> <!-- Este contiene el fondo -->
+    </head>
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #621FBE;
-      color: white;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      z-index: 999;
-      flex-wrap: wrap;
-    }
+    <body>
 
-    .logo {
-      height: 70px;
-      margin-right: 12px;
-    }
+        <!-- HEADER -->
+        <header>
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="images/Robot.png" alt="Logo" class="logo">
+                </a>
+                <h1 class="site-title">HollowNet</h1>
+            </div>
+            <nav class="nav-principal">
+                <div class="menu-left">
+                    <a href="index.html">Inicio</a>
+                    <a href="noticias.html">Noticias</a>
+                    <a href="Tienda.html">Tienda</a>
+                    <a href="Contacto.html">Contacto</a>
+                </div>
+                <div class="menu-right">
+                    <a href="Registro.html">Registro</a>
+                    <a href="Login.html">Login</a>
+                </div>
+            </nav>
+        </header>
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      min-width: 250px;
-    }
+        <!-- BIENVENIDA -->
+        <section class="hero">
+            <div class="hero-content vertical">
+                <div class="hero-text">
+                    <h2>¡Bienvenid@ a HollowNet!</h2>
+                    <p>
+                        La mejor tienda digital de videojuegos. Explora juegos unicos, sigue noticias y<br>
+                        gestiona tu biblioteca como un verdadero gamer.
+                    </p>
+                    <a href="Tienda.html" class="boton-ir-tienda">Explorar Tienda</a>
+                </div>
+            </div>
+        </section>
 
-    .site-title {
-      margin-left: 10px;
-      font-size: 2em;
-      font-family: 'Press Start 2P', monospace;
-      white-space: nowrap;
-    }
+        <!-- SLIDER  -->
+        
+        <div class="slider-container">
+            <div class="slider">
+                <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
+                <img src="images/kart.jpg" alt="Juego" id="slider-image">
+                <div class="info">
+                    <h2 id="slider-title">Kart Racing X</h2>
+                    <p id="slider-category">Carreras</p>
+                    <p id="slider-price">₡10.000</p>
+                </div>
+                <button class="slider-button next" onclick="nextSlide()">&#10095;</button>
+            </div>
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      flex: 3;
-      padding-top: 6px;
-    }
+            <div class="thumbnails">
+                <img src="images/kart.jpg" class="thumbnail" onclick="goToSlide(0)">
+                <img src="images/minecraft.jpg" class="thumbnail" onclick="goToSlide(1)">
+                <img src="images/spyro.jpg" class="thumbnail" onclick="goToSlide(2)">
+            </div>
+        </div>
 
-    nav a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
+        <!-- SLIDER SCRIPT -->
+        <script>
+            const slides = [
+                {
+                    image: 'images/kart.jpg',
+                    title: 'Kart Racing X',
+                    category: 'Carreras',
+                    price: '₡10.000'
+                },
+                {
+                    image: 'images/minecraft.jpg',
+                    title: 'Minecraft',
+                    category: 'Sandbox',
+                    price: '₡12.000'
+                },
+                {
+                    image: 'images/spyro.jpg',
+                    title: 'Spyro Remastered',
+                    category: 'Aventura',
+                    price: '₡14.000'
+                }
+            ];
 
-    nav a:hover {
-      background-color: #320D6D;
-      color: #A584E8;
-    }
+            let currentIndex = 0;
+            let sliderInterval = setInterval(nextSlide, 4000);
 
-    main {
-      padding: 40px 20px;
-    }
+            function updateSlide() {
+                const slide = slides[currentIndex];
+                document.getElementById('slider-image').src = slide.image;
+                document.getElementById('slider-title').textContent = slide.title;
+                document.getElementById('slider-category').textContent = slide.category;
+                document.getElementById('slider-price').textContent = slide.price;
+            }
 
-    h2 {
-      font-size: 1.5em;
-      margin-bottom: 20px;
-      font-family: 'Press Start 2P', monospace;
-    }
+            function nextSlide() {
+                currentIndex = (currentIndex + 1) % slides.length;
+                updateSlide();
+            }
 
-    p {
-      font-size: 1em;
-      line-height: 1.6;
-      max-width: 700px;
-      margin: auto;
-    }
+            function prevSlide() {
+                currentIndex = (currentIndex - 1 + slides.length) % slides.length;
+                updateSlide();
+            }
 
-    .burbuja {
-      background-color: #320D6D;
-      border-radius: 12px;
-      width: 80%;
-      max-width: 600px;
-      padding: 20px;
-      margin: 40px auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      text-align: center;
-    }
+            function goToSlide(index) {
+                currentIndex = index;
+                updateSlide();
+                resetInterval();
+            }
 
-    .burbuja img {
-      width: 100%;
-      max-width: 250px;
-      border-radius: 50px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-      transition: transform 0.3s ease;
-    }
+            function resetInterval() {
+                clearInterval(sliderInterval);
+                sliderInterval = setInterval(nextSlide, 4000);
+            }
+        </script>
 
-    .burbuja img:hover {
-      transform: scale(1.05);
-    }
-
-    .burbuja h3 {
-      margin-top: 15px;
-      font-family: 'Press Start 2P', monospace;
-      font-size: 0.8em;
-      color: #A584E8;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-left">
-      <a href="index.html">
-        <img src="Robot.png" alt="HollowNet Logo" class="logo">
-      </a>
-      <h1 class="site-title">HollowNet</h1>
-    </div>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="noticias.html">Noticias</a>
-      <a href="Lanzamientos.html">Lanzamientos</a>
-      <a href="Reviews.html">Reviews</a>
-      <a href="Contacto.html">Contacto</a>
-      <a href="Registro.html">Registro</a>
-      <a href="Login.html">Login</a>
-      <a href="Acerca.html">Acerca</a>
-    </nav>
-  </header>
-
-  <main>
-    <h2>Inicio</h2>
-    <p>¡Bienvenidx! Aqui podras saber la ultima sobre los videojogos</p>
-
-    <div class="burbuja">
-      <a href="https://store.steampowered.com/" target="_blank">
-        <img src="spyro.jpg" alt="Ofertas en Steam - Spyro">
-        <h3>Click aqui para abrir las ofertas de Steam</h3>
-      </a>
-    </div>
-  </main>
-</body>
+    </body>
 </html>
