@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+    <head>
+        <meta charset="UTF-8">
+        <title>Admin - HollowNet</title>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/header.css">
+        <style>
+            body {
+                margin: 0;
+                background-color: #130344;
+                font-family: 'Segoe UI', sans-serif;
+                color: #ffffff;
+                background-image: url('../images/fondo admin.png');
+                background-size: cover;
+                background-position: center;
+                background-repeat: no-repeat;
+                background-attachment: fixed;
+            }
+
+            main {
+                max-width: 1200px;
+                margin: 100px auto 60px;
+                padding: 20px;
+                
+                border-radius: 12px;
+            }
+
+
+            .admin-panel {
+                display: grid;
+                grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+                gap: 30px;
+                margin-top: 40px;
+            }
+
+            .admin-tile {
+                background-color: rgba(26, 11, 45, 0.85);
+                border: 2px solid #2c0f6e;
+                padding: 40px 20px;
+                border-radius: 16px;
+                text-align: center;
+                transition: transform 0.2s, box-shadow 0.2s;
+                font-size: 1.1em;
+            }
+
+            .admin-tile:hover {
+                transform: scale(1.04);
+                box-shadow: 0 0 15px rgba(165, 132, 232, 0.4);
+            }
+
+            .admin-tile a {
+                display: block;
+                font-weight: bold;
+                color: white;
+                text-decoration: none;
+                font-size: 1.1em;
+            }
+
+            .admin-tile a:hover {
+                text-decoration: underline;
+            }
+
+            footer {
+                text-align: center;
+                padding: 30px 20px;
+                font-size: 0.85em;
+                color: #888;
+            }
+        </style>
+    </head>
+    <body>
+
+        <!-- HEADER -->
+        <header>
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="images/Robot.png" alt="Logo" class="logo">
+                </a>
+                <h1 class="site-title">HollowNet</h1>
+            </div>
+
+            <nav class="nav-principal">
+                <div class="menu-left">
+                    <a href="index.html">Inicio</a>
+                    <a href="noticias.html">Noticias</a>
+                    <a href="Tienda.html">Tienda</a>
+                    <a href="Contacto.html">Contacto</a>
+                </div>
+
+                <div class="menu-right">
+                    <a href="index.html">Cerrar sesión</a>
+                </div>
+            </nav>
+        </header>
+        <!<!-- un panel sencillo de burbujas para hacer crud con las cosas verlas  -->
+        <main>
+            <h2 style="text-align:center; font-family:'Press Start 2P', monospace; font-size: 1.4em; color: white;">Panel de Administración</h2>
+
+            <section class="admin-panel">
+                <div class="admin-tile">
+                    <a href="admin-juegos.html">Gestionar Juegos</a>
+                </div>
+                <div class="admin-tile">
+                    <a href="admin-noticias.html">Gestionar Noticias</a>
+                </div>
+                <div class="admin-tile">
+                    <a href="admin-comentarios.html">Comentarios</a>
+                </div>
+                <div class="admin-tile">
+                    <a href="admin-usuarios.html">Usuarios</a>
+                </div>
+            </section>
+        </main>
+
+        <footer>
+            Exclusivo para administradores de HollowNet. 🐜
+        </footer>
+
+    </body>
+</html>

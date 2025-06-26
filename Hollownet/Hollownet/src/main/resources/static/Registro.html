@@ -1,123 +1,162 @@
 <!DOCTYPE html>
-
-
-
-
-
-<!--
-Registro
--->
-
 <html lang="es">
-    <head>
-        <meta charset="UTF-8">
-        <title>Registro</title>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
-        <style>
-            body {
-                margin: 0;
-                background-color: #1a0b47;
-                color: #1a0b47;
-                font-family: 'Segoe UI', sans-serif;
-            }
+<head>
+  <meta charset="UTF-8">
+  <title>Registro - HollowNet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/header.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+  <style>
+    body {
+      margin: 0;
+      background-color: #130344;
+      font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
 
-            .registro-box {
-                max-width: 400px;
-                margin: 100px auto;
-                background-color: white;
-                padding: 30px;
-                border-radius: 10px;
-            }
+    .page-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
+    }
 
-            .registro-box h5 {
-                text-align: center;
-                margin-bottom: 24px;
-            }
+    .registro-box {
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 14px;
+      padding: 26px 32px;
+      box-shadow: 0 0 16px rgba(165, 132, 232, 0.3);
+    }
 
-            .registro-box label {
-                font-size: 0.9rem;
-                margin-bottom: 5px;
-            }
+    .registro-box h5 {
+      color: #130344;
+      font-weight: bold;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      text-align: left;
+    }
 
-            .registro-box input {
-                width: 100%;
-                padding: 10px;
-                margin-bottom: 15px;
-                border-radius: 6px;
-                border: 1px solid #ccc;
-                font-family: 'Segoe UI', sans-serif;
-                font-size: 0.9rem;
-            }
+    .form-label {
+      color: #130344;
+      font-weight: 600;
+    }
 
-            .btn-primary {
-                background-color: #1a0b47;
-                border: none;
-            }
+    .form-control {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
 
-            .btn-primary:hover {
-                background-color: #14073a;
-            }
+    .form-control::placeholder {
+      color: #bbb;
+    }
 
-            .login-link {
-                font-size: 0.8rem;
-                text-align: center;
-                margin-top: 10px;
-            }
+    .btn-primary {
+      background-color: #621FBE;
+      border: none;
+      font-weight: bold;
+      border-radius: 8px;
+    }
 
-            .login-link a {
-                color: #1a0b47;
-                text-decoration: none;
-                font-weight: 500;
-            }
+    .btn-primary:hover {
+      background-color: #4b16a3;
+    }
 
-            .login-link a:hover {
-                text-decoration: underline;
-            }
+    .btn-outline-dark {
+      width: 100%;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 10px;
+    }
 
-            .logo {
-                position: absolute;
-                top: 20px;
-                left: 20px;
-                display: flex;
-                align-items: center;
-                gap: 10px;
-                color: white;
-            }
+    .extra-links {
+      font-size: 0.85rem;
+      margin-top: 16px;
+      text-align: center;
+    }
 
-            .logo img {
-                height: 30px;
-            }
-        </style>
-    </head>
-    <body>
-        <div class="logo">
-            <a href="index.html" style="display: flex; align-items: center; color: white; text-decoration: none;">
-                <img src="Robot.png" alt="HollowNet Logo">
-                <h3 style="margin: 0;">HollowNet</h3>
-            </a>
+    .extra-links a {
+      color: #1a0b47;
+      text-decoration: none;
+      font-weight: 500;
+      margin: 0 6px;
+    }
+
+    .extra-links a:hover {
+      text-decoration: underline;
+    }
+
+    hr {
+      margin: 30px 0 20px;
+      border-color: #ddd;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <a href="index.html">
+        <img src="images/Robot.png" alt="Logo" class="logo">
+      </a>
+      <h1 class="site-title">HollowNet</h1>
+    </div>
+    <nav class="nav-principal">
+      <div class="menu-left">
+        <a href="index.html">Inicio</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="Tienda.html">Tienda</a>
+        <a href="Contacto.html">Contacto</a>
+      </div>
+      <div class="menu-right">
+        <a href="Registro.html">Registro</a>
+        <a href="newLogin.html">Login</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- caja para llenar registro -->
+  <div class="page-content">
+    <div class="registro-box">
+      <h5>Crea una cuenta</h5>
+      <form>
+        <div class="mb-3 text-start">
+          <label for="nombre" class="form-label">Nombre</label>
+          <input type="text" class="form-control" id="nombre" placeholder="Tu nombre" required>
         </div>
-        <div class="registro-box shadow">
-            <h5>Registro</h5>
-            <form>
-                <div class="mb-3">
-                    <label for="nombre" class="form-label">Nombre</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required>
-                </div>
-                <div class="mb-3">
-                    <label for="correo" class="form-label">Correo</label>
-                    <input type="email" id="correo" name="correo" class="form-control" placeholder="correo@ejemplo.com" required>
-                </div>
-                <div class="mb-3">
-                    <label for="clave" class="form-label">Contraseña</label>
-                    <input type="password" id="clave" name="clave" class="form-control" placeholder="********" required>
-                </div>
-                <button type="submit" class="btn btn-primary w-100">Crear cuenta</button>
-            </form>
-
-            <div class="login-link mt-3">
-                ¿Ya tienes una cuenta? <a href="NewLogin.html">Iniciar Sesión</a>
-            </div>
+        <div class="mb-3 text-start">
+          <label for="correo" class="form-label">Correo electrónico</label>
+          <input type="email" class="form-control" id="correo" placeholder="correo@ejemplo.com" required>
         </div>
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-    </body>
+        <div class="mb-3 text-start">
+          <label for="clave" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="clave" placeholder="********" required>
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-2">Registrarse</button>
+
+        <div class="extra-links">
+          ¿Ya tienes una cuenta? <a href="newLogin.html">Inicia sesión</a>
+        </div>
+      </form>
+
+      <hr>
+
+      <button class="btn btn-outline-dark">
+        <img src="https://img.icons8.com/color/20/google-logo.png" alt="Google" style="margin-right: 8px;">
+        Registrarse con Google
+      </button>
+      <button class="btn btn-outline-dark">
+        <img src="https://img.icons8.com/ios-filled/20/000000/mac-os.png" alt="Apple" style="margin-right: 8px;">
+        Registrarse con Apple
+      </button>
+    </div>
+  </div>
+ </body>
 </html>

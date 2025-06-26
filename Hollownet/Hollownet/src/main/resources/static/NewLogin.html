@@ -2,95 +2,159 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
+  <title>Iniciar Sesión - HollowNet</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Inicar Sesión</title>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/header.css">
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
   <style>
     body {
-      background-color: #1a0b47;
-      color: #1a0b47;
+      margin: 0;
+      background-color: #130344;
       font-family: 'Segoe UI', sans-serif;
+      color: #ffffff;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .page-content {
+      flex: 1;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding: 40px 20px;
     }
 
     .login-box {
-      max-width: 400px;
-      margin: 100px auto;
-      background: white;
-      padding: 30px;
-      border-radius: 10px;
+      background-color: #ffffff;
+      width: 100%;
+      max-width: 440px;
+      border-radius: 14px;
+      padding: 26px 32px;
+      box-shadow: 0 0 16px rgba(165, 132, 232, 0.3);
+    }
+
+    .login-box h5 {
+      color: #130344;
+      font-weight: bold;
+      font-size: 1.4em;
+      margin-bottom: 20px;
+      text-align: left;
+    }
+
+    .form-label {
+      color: #130344;
+      font-weight: 600;
+    }
+
+    .form-control {
+      border: 1px solid #ccc;
+      border-radius: 8px;
+    }
+
+    .form-control::placeholder {
+      color: #bbb;
     }
 
     .btn-primary {
-      background-color: #1a0b47;
+      background-color: #621FBE;
       border: none;
+      font-weight: bold;
+      border-radius: 8px;
+    }
+
+    .btn-primary:hover {
+      background-color: #4b16a3;
     }
 
     .btn-outline-dark {
       width: 100%;
+      font-weight: bold;
+      border-radius: 8px;
+      margin-bottom: 10px;
     }
 
-    .logo {
-      position: absolute;
-      top: 20px;
-      left: 20px;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: white;
+    .extra-links {
+      font-size: 0.85rem;
+      margin-top: 16px;
+      text-align: center;
     }
 
-    .logo img {
-      height: 30px;
-    }
-
-    a {
-      font-size: 0.8rem;
+    .extra-links a {
       color: #1a0b47;
       text-decoration: none;
-      margin: 0 5px;
+      font-weight: 500;
+      margin: 0 6px;
     }
 
-    a:hover {
+    .extra-links a:hover {
       text-decoration: underline;
     }
 
-    .form-control::placeholder {
-      color: #ccc;
+    hr {
+      margin: 30px 0 20px;
+      border-color: #ddd;
     }
   </style>
 </head>
 <body>
 
-  <div class="logo">
+  <!-- HEADER -->
+  <header>
+    <div class="header-left">
+      <a href="index.html">
+        <img src="images/Robot.png" alt="Logo" class="logo">
+      </a>
+      <h1 class="site-title">HollowNet</h1>
+    </div>
+    <nav class="nav-principal">
+      <div class="menu-left">
+        <a href="index.html">Inicio</a>
+        <a href="noticias.html">Noticias</a>
+        <a href="Tienda.html">Tienda</a>
+        <a href="Contacto.html">Contacto</a>
+      </div>
+      <div class="menu-right">
+        <a href="Registro.html">Registro</a>
+        <a href="newLogin.html">Login</a>
+      </div>
+    </nav>
+  </header>
+ 
+  
+  <!--<!-- caja de login donde se puede ingreasr info -->
+  <div class="page-content">
+    <div class="login-box">
+      <h5>Accede a tu cuenta</h5>
+      <form>
+        <div class="mb-3 text-start">
+          <label for="user" class="form-label">Usuario</label>
+          <input type="text" class="form-control" id="user" placeholder="Tu usuario">
+        </div>
+        <div class="mb-3 text-start">
+          <label for="password" class="form-label">Contraseña</label>
+          <input type="password" class="form-control" id="password" placeholder="Contraseña">
+        </div>
+        <button type="submit" class="btn btn-primary w-100 mt-2">Iniciar sesión</button>
 
-    <img src="HollowWhiteFondo.png" alt="HollowNet Logo">
-    <h3>HollowNet</h3>
-  </div>
+        <div class="extra-links">
+          <a href="#">¿Olvidaste tu contraseña?</a><br>
+          <a href="Registro.html">Crear una cuenta nueva</a>
+        </div>
+      </form>
 
-  <div class="login-box shadow">
-    <h5 class="mb-4 text-center">Acceder</h5>
-    <form>
-      <div class="mb-3">
-        <label for="user" class="form-label">Usuario</label>
-        <input type="text" class="form-control" id="user" placeholder="User">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Contraseña</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
-      </div>
-      <button type="submit" class="btn btn-primary w-100">Siguiente</button>
-      <div class="d-flex justify-content-center mt-2">
-        <a href="#">¿Nuevo Usuario?</a> |
-        <a href="#">Crear tu Cuenta</a>
-      </div>
-    </form>
-    <hr>
-    <button class="btn btn-outline-dark mb-2">
-      <img src="" alt="Logo"> Continuar con Google
-    </button>
-    <button class="btn btn-outline-dark">
-      <img src="https://img.icons8.com/ios-filled/16/000000/mac-os.png" alt="Apple"> Continuar con Apple
-    </button>
+      <hr>
+
+      <button class="btn btn-outline-dark">
+        <img src="https://img.icons8.com/color/20/google-logo.png" alt="Google" style="margin-right: 8px;">
+        Continuar con Google
+      </button>
+      <button class="btn btn-outline-dark">
+        <img src="https://img.icons8.com/ios-filled/20/000000/mac-os.png" alt="Apple" style="margin-right: 8px;">
+        Continuar con Apple
+      </button>
+    </div>
   </div>
 
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>

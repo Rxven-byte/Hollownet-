@@ -114,17 +114,15 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   box-shadow: 0 0 12px rgba(19, 3, 68, 0.8);
 }
 
-
 /* binvenida */
 
 .hero {
   min-height: 70vh;
-    background-image: url('../images/fondoc.jpg');
-
- background-size: cover;           
-  background-position: center;     
-  background-repeat: no-repeat;    
-  background-attachment: fixed;    
+  background-image: url('../images/fondoc.jpg');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
   position: relative;
   display: flex;
   justify-content: center;
@@ -134,7 +132,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   overflow: hidden;
 }
 
-
 .hero::before {
   content: "";
   position: absolute;
@@ -143,7 +140,6 @@ Click nbfs://nbhost/SystemFileSystem/Templates/Other/CascadeStyleSheet.css to ed
   z-index: 1;
 }
 
-/* Contenido centrado encima del fondo */
 .hero-content.vertical {
   position: relative;
   z-index: 2;

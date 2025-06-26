@@ -58,6 +58,7 @@ body {
   margin-top: 10px;
 }
 
+
 .btn-comprar {
   padding: 10px 20px;
   background-color: #621FBE;
@@ -79,6 +80,8 @@ body {
   justify-content: center;
   gap: 20px;
 }
+
+
 
 .galeria img {
   width: 200px;

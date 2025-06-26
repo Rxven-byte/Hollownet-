@@ -6,12 +6,12 @@
         <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="css/header.css">
         <link rel="stylesheet" href="css/slider.css">
-        <link rel="stylesheet" href="css/hero.css"> <!-- Este contiene el fondo -->
+        <link rel="stylesheet" href="css/hero.css"> 
     </head>
 
     <body>
 
-        <!-- HEADER -->
+        <!-- Header con opciones para pasar de pagina, lleva a paginas y jala del css header -->
         <header>
             <div class="header-left">
                 <a href="index.html">
@@ -19,6 +19,7 @@
                 </a>
                 <h1 class="site-title">HollowNet</h1>
             </div>
+
             <nav class="nav-principal">
                 <div class="menu-left">
                     <a href="index.html">Inicio</a>
@@ -26,14 +27,16 @@
                     <a href="Tienda.html">Tienda</a>
                     <a href="Contacto.html">Contacto</a>
                 </div>
+
                 <div class="menu-right">
                     <a href="Registro.html">Registro</a>
-                    <a href="Login.html">Login</a>
+                    <a href="newLogin.html">Login</a>
                 </div>
             </nav>
         </header>
 
-        <!-- BIENVENIDA -->
+
+        <!-- BIENVENIDA con imagen de fondo y descripcion de la pagina por texto, hecho en slide.css` -->
         <section class="hero">
             <div class="hero-content vertical">
                 <div class="hero-text">
@@ -46,9 +49,12 @@
                 </div>
             </div>
         </section>
-
-        <!-- SLIDER  -->
+        <!-- <!-- font del titulo -->
+        <h2 style="text-align:center; font-family:'Press Start 2P', monospace; font-size: 1.2em; color: white; margin-top: 40px;">Juegos Destacados</h2>
+       
         
+        <!-- SLIDER lo metemons en un contendener, dejamos le primero predeterminado y despues en script de thumbnail que se mueva en los que les pusimos  -->
+
         <div class="slider-container">
             <div class="slider">
                 <button class="slider-button prev" onclick="prevSlide()">&#10094;</button>
@@ -68,7 +74,7 @@
             </div>
         </div>
 
-        <!-- SLIDER SCRIPT -->
+        <!-- SLIDER SCRIPT y aqui sale lo que va saliendo. pusimos el comment e burbuja externa y equineada, jalamos las cosas de slider.css -->
         <script>
             const slides = [
                 {
