@@ -1,173 +1,242 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-
-<!DOCTYPE html>
 <html lang="es">
     <head>
         <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Noticias - HollowNet</title>
-        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/new.css">
         <style>
             body {
-                margin: 0;
-                padding-top: 110px;
-                background-color: #1D124D;
-                font-family: 'Courier New', monospace;
-                color: #FFFFFF;
-                text-align: center;
+                background-color: #130344;
+                color: #ffffff;
+                font-family: Arial, sans-serif;
             }
 
             header {
-                position: fixed;
-                top: 0;
-                width: 100%;
-                background-color: #621FBE;
-                color: white;
-                padding: 14px 24px;
-                display: flex;
-                align-items: center;
-                justify-content: space-between;
-                box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-                z-index: 999;
-                flex-wrap: wrap;
-            }
-
-            .logo {
-                height: 70px;
-                margin-right: 12px;
-            }
-
-            .header-left {
-                display: flex;
-                align-items: center;
-                flex: 1;
-                min-width: 250px;
+                background-color: #1D124D;
             }
 
             .site-title {
-                margin-left: 10px;
-                font-size: 2em;
-                font-family: 'Press Start 2P', monospace;
-                white-space: nowrap;
+                color: #ffffff;
             }
 
-            nav {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 12px;
-                flex: 3;
-                padding-top: 6px;
+            .nav-link {
+                color: #ffffff !important;
             }
 
-            nav a {
-                color: #FFFFFF;
-                text-decoration: none;
-                font-weight: bold;
-                padding: 5px 8px;
-                border-radius: 4px;
-                font-size: 15px;
-                transition: all 0.3s ease;
-            }
-
-            nav a:hover {
-                background-color: #320D6D;
-                color: #A584E8;
-            }
-
-            main {
-                padding: 40px 20px;
-            }
-
-            h2 {
-                font-size: 1.5em;
-                margin-bottom: 20px;
-                font-family: 'Press Start 2P', monospace;
-            }
-
-            .noticias {
-                display: flex;
-                flex-wrap: wrap;
-                justify-content: center;
-                gap: 30px;
-            }
-
-            .noticia {
-                background-color: #621FBE;
-                border-radius: 10px;
-                padding: 20px;
-                max-width: 300px;
-                text-align: center;
-                box-shadow: 0 4px 10px rgba(0, 0, 0, 0.4);
-            }
-
-            .noticia h3 {
-                font-family: 'Press Start 2P', monospace;
-                font-size: 1em;
-                margin-bottom: 10px;
-                color: #f0f3f4;
-            }
-
-            .noticia p {
-                font-size: 0.9em;
-                margin-bottom: 10px;
-                color: #E0E0E0;
-            }
-
-            .noticia img {
+            .card {
                 width: 100%;
-                border-radius: 6px;
-                margin-top: 10px;
+                background-color: #1a1433;
+                border: none;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                margin-bottom: 1.5rem;
+                padding: 5px;
+                margin: 10px;
+                min-width: 2000px;
+                max-width: 2000px;
+                margin-left: auto;
+                margin-right: auto;
             }
-        </style>
+
+            .card-title {
+                color: #ffffff;
+                text-align: left;
+                font-size: 40px;
+                font-weight: bold;
+            }
+            
+            .card-date {
+                color: #ffffff;
+                text-align: left;
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            .card-text {
+                color: #cccccc;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 20px;
+            }
+
+            .card img {
+              
+                
+                
+                min-width: 960px;
+                min-height: 311px;
+                max-width: 960px;
+                max-height: 311px;
+                /*
+                min-width: 820px;
+                min-height: 350px;
+                max-width: 820px;
+                max-height: 350px;*/
+                /*
+                min-width: 480px;
+                min-height: 270px;
+                max-width: 480px;
+                max-height: 270px;
+                padding: 5px;*/
+
+                object-fit: cover;
+            }
+
+            .modal-altura-custom {
+                height: 80vh;
+                overflow-y: auto;
+            }
+
+
+            .logo {
+                height: 40px;
+            }
+        </style>    
     </head>
     <body>
-        <header>
-            <div class="header-left">
-                <a href="index.html">
-                    <img src="Robot.png" alt="HollowNet Logo" class="logo">
-                </a>
-                <h1 class="site-title">HollowNet</h1>
-            </div>
-            <nav>
-                <a href="index.html">Inicio</a>
-                <a href="noticias.html">Noticias</a>
-                <a href="Lanzamientos.html">Lanzamientos</a>
-                <a href="Reviews.html">Reviews</a>
-                <a href="Contacto.html">Contacto</a>
-                <a href="Registro.html">Registro</a>
-                <a href="Login.html">Login</a>
-                <a href="Acerca.html">Acerca</a>
-            </nav>
 
+        <!-- HEADER -->
+        <header>
+            <div class="container-fluid d-flex justify-content-between align-items-center py-2 px-4">
+                <div class="header-left d-flex align-items-center">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <img src="images/HollowWhiteFondo.png" alt="Logo" class="logo me-2">
+                        <h1 class="site-title h4 mb-0">HollowNet</h1>
+                    </a>
+                </div>
+                <nav class="nav-principal d-flex align-items-center">
+                    <div class="menu-left d-flex">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                        <a href="noticias.html" class="nav-link">Noticias</a>
+                        <a href="Tienda.html" class="nav-link">Tienda</a>
+                        <a href="Contacto.html" class="nav-link">Contacto</a>
+                    </div>
+                    <div class="menu-right d-flex ms-4">
+                        <a href="Registro.html" class="custom-btn">Registro</a>
+                        <a href="newLogin.html" class="custom-btn">Login</a>
+                        <a href="#" class="custom-btn"><i class="bi bi-heart"></i></a>
+                        <a href="#" class="custom-btn"><i class="bi bi-cart"></i></a>
+                        <a href="#" class="custom-btn"><i class="bi bi-person-circle"></i></a>
+                    </div>
+
+
+
+                </nav>
+            </div>
         </header>
 
-        <main>
-            <h2>Ultimas Noticias</h2>
-            <section class="noticias">
+        <!-- NOTICIA FNAF-->
+        <main class="container mt-4">
+            <h1 class="mb-4 text-center" >Noticias Recientes</h1>
 
-                <div class="noticia">
-                    <h3>Switch 2 está carisimo</h3>
-                    <p>Nintendo nos quiere estafar con <strong>precios ridiculos</strong>.</p>
-                    <img src="switch2.jpeg" alt="Switch 2 carísimo">
+            <!-- NOTICIA FNAF-->
+            <div style="display: flex; justify-content: center;">
+                <div class="card d-flex flex-row p-4">
+                    <div class="flex-grow-1" data-bs-toggle="modal" data-bs-target="#modal1" style="cursor:pointer;">>
+                        <h5 class="card-title">The Five Nights at Freddy's chapter is now available on Steam!</h5>
+                        <h1 class="card-date">Noticias - 17 JUN</h1>
+                        <p class="card-text">Metallic sound. Shrieking laughter. Music to your ears.
+                            Dead by Daylight: Five Nights at Freddy's includes a new killer, 
+                            Springtrap. If you purchase this add-on, you will unlock the exclusive 
+                            Pizza Stack badge and the banner...</p>
+                    </div>
+                    <img src="https://clan.fastly.steamstatic.com/images/11814497/0213eb254a8e3d7170ce57876ca978da02bd67e1_960x311.jpg"
+                         class="ms-1" 
+                         alt="Patch Notes"
+                         style="cursor:pointer;"
+                         data-bs-toggle="modal" 
+                         data-bs-target="#modal1">
                 </div>
+            </div>
 
-                <div class="noticia">
-                    <h3>Minecraft</h3>
-                    <p>Mojang</p>
-                    <img src="minecraft.jpg" alt="minecraft">
+            <!-- MODELO FNAF-->
+            
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width: 1500px; min-height: 1500px">
+
+                    <div class="modal-content bg-dark text-white">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="modal1Label">The Five Nights at Freddy's chapter is now available on Steam!</h5>
+                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+                        </div>
+                        <div class="modal-body">
+                            <img src="https://clan.fastly.steamstatic.com/images/35190912/5d2f7e0752cc681001881913d18f7de6c872e9b2_960x311.png" class="img-fluid d-block mx-auto mb-3" 
+                                 alt="Patch Notes" style="min-width: 1100px; height: 451px;">
+                            <p>Metallic sound. Shrieking laughter. Music to your ears.</p>
+                            <p>Dead by Daylight: Five Nights at Freddy's includes a new killer, Springtrap. If you purchase this add-on, you will unlock the exclusive Pizza Stack badge and the banner...</p>
+                            <p>Más detalles del contenido, imágenes, enlaces, etc.</p>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                        </div>
+                    </div>
                 </div>
+            </div>
+            
+            
+            
+            
+            
+            
 
-                <div class="noticia">
-                    <h3>Ejemplo</h3>
-                    <p>Ejemplo</p>
-                    <img src="switch2.jpeg" alt="Switch 2 carísimo">
+            <!-- NOTICIA RAINBOW SIX-->
+            <div style="display: flex; justify-content: center;">
+                <div class="card d-flex flex-row p-4">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title">Y10S2.1 Patch Notes</h5>
+                        <h1 class="card-date">Noticias - 9 JUL</h1>
+                        <p class="card-text">Our development team explores the idea of control and how this will affect 
+                                            your Guardian’s journey on Kepler. Destiny 2: The Edge of Fate // July 15, 2025</p>
+                    </div>
+                    <img src="https://clan.fastly.steamstatic.com/images/35190912/5d2f7e0752cc681001881913d18f7de6c872e9b2_960x311.png" class="ms-1" alt="Patch Notes">
                 </div>
+            </div>
 
-            </section>
+            <!-- NOTICIA DESTINY 2-->
+            <div style="display: flex; justify-content: center;">
+                <div class="card d-flex flex-row p-4">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title">Y10S2.1 Patch Notes</h5>
+                        <h1 class="card-date">Noticias - 12 JUN</h1>
+                        <p class="card-text">See the upcoming changes to Rainbow Six Siege whit the release of Y10S2.1</p>
+                    </div>
+                    <img src="https://clan.fastly.steamstatic.com/images//8328525/dd768c8f17c834ec58ff6a9f52d76105949365f3.jpg" class="ms-1" alt="Patch Notes">
+                </div>
+            </div>
+
+            <!-- NOTICIA DUNE AWEKAING-->
+            <div style="display: flex; justify-content: center;">
+                <div class="card d-flex flex-row p-4">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title">Developer Update</h5>
+                        <h1 class="card-date">Noticias - 9 JUL</h1>
+                        <p class="card-text">Hello Sleepers, This letter begins with an apology. On Monday the 7th of July, we 
+                                            patched out a layout change to the Deep Desert which caused several areas of the PvE 
+                                            Deep Desert...</p>
+                    </div>
+                    <img src="https://clan.fastly.steamstatic.com/images/42849822/1847b4d402cfa312227775a2c7584f8a831cff30_960x311.jpg" class="ms-1" alt="Patch Notes">
+                </div>
+            </div>
+            
+            <!-- NOTICIA APEX-->
+            <div style="display: flex; justify-content: center;">
+                <div class="card d-flex flex-row p-4">
+                    <div class="flex-grow-1">
+                        <h5 class="card-title">Apex Legends™: Takeover Patch Notes</h5>
+                        <h1 class="card-date">Noticias - 10 FEB</h1>
+                        <p class="card-text">Prepare for Takeover's launch with details on Legend and weapon buffs, Assault class
+                                            perks, and more in our full Patch Notes.</p>
+                    </div>
+                    <img src="https://clan.fastly.steamstatic.com/images/38098458/3e3ced47654ce9d5fdcb5872e769c1b60ff60041_960x311.jpg" class="ms-1" alt="Patch Notes">
+                </div>
+            </div>
         </main>
+
+        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     </body>
 </html>
+

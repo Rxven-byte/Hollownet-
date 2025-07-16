@@ -82,11 +82,11 @@ header {
 
 
 .menu-right a {
-  background-color: #A584E8;
+  background-color: #572FB0;
   color: #130344;
   text-decoration: none;
   font-weight: 600;
-  padding: 6px 16px;
+  padding: 8px 22px;
   border-radius: 8px;
   font-size: 14px;
   transition: background-color 0.3s ease, transform 0.2s;
