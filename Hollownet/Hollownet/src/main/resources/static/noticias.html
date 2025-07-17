@@ -62,6 +62,13 @@
                 margin-bottom: 5px;
                 font-size: 20px;
             }
+            /*
+            .card-subtitle {
+                color: #cccccc;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 24px;
+            }*/
 
             .card img {
               
@@ -86,14 +93,40 @@
                 object-fit: cover;
             }
 
-            .modal-altura-custom {
-                height: 80vh;
-                overflow-y: auto;
+            .custom-modal-size {
+                max-width: 55vw; /* 95% del ancho del viewport */
+                height: 80vh;     /* 95% de la altura del viewport */
+            }
+            .modal-content {
+                height: 100%;
             }
 
 
             .logo {
                 height: 40px;
+            }
+
+            .bg-two-tone-dark {
+                background: linear-gradient(to bottom, #343a40 50%, #212529 50%); /* Ajusta los colores si quieres otros grises */
+            }
+
+            /* Estilos opcionales para la tarjeta de la noticia que abre el modal */
+            .news-card {
+                background-color: #212529; /* Fondo oscuro para la tarjeta */
+                color: white;
+                padding: 20px;
+                margin: 50px auto;
+                max-width: 800px;
+                border-radius: 8px;
+                cursor: pointer; /* Indica que es clickeable */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .news-card:hover {
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+            .bg-two-tone-dark {
+                background: linear-gradient(to bottom, #343a40 50%, #212529 50%);
             }
         </style>    
     </head>
@@ -129,10 +162,12 @@
             </div>
         </header>
 
-        <!-- NOTICIA FNAF-->
+       
         <main class="container mt-4">
             <h1 class="mb-4 text-center" >Noticias Recientes</h1>
 
+<!---------------------------------------------------------------------------------------------------------------------------->            
+            
             <!-- NOTICIA FNAF-->
             <div style="display: flex; justify-content: center;">
                 <div class="card d-flex flex-row p-4">
@@ -152,36 +187,56 @@
                          data-bs-target="#modal1">
                 </div>
             </div>
-
             <!-- MODELO FNAF-->
-            
-            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable" style="min-width: 1500px; min-height: 1500px">
 
-                    <div class="modal-content bg-dark text-white">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="modal1Label">The Five Nights at Freddy's chapter is now available on Steam!</h5>
-                            <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                        </div>
-                        <div class="modal-body">
-                            <img src="https://clan.fastly.steamstatic.com/images/35190912/5d2f7e0752cc681001881913d18f7de6c872e9b2_960x311.png" class="img-fluid d-block mx-auto mb-3" 
-                                 alt="Patch Notes" style="min-width: 1100px; height: 451px;">
-                            <p>Metallic sound. Shrieking laughter. Music to your ears.</p>
-                            <p>Dead by Daylight: Five Nights at Freddy's includes a new killer, Springtrap. If you purchase this add-on, you will unlock the exclusive Pizza Stack badge and the banner...</p>
-                            <p>Más detalles del contenido, imágenes, enlaces, etc.</p>
-                        </div>
-                        <div class="modal-footer">
-                            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            
-            
-            
-            
-            
-            
+<div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" style="max-height: 90vh;"> <div class="modal-content bg-two-tone-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal1Label">The Five Nights at Freddy's chapter is now available on Steam!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-start px-4 d-flex flex-column" style="min-height: auto; padding-bottom: 0;"> <div style="flex: 0 0 auto;">
+          <img
+            src="https://clan.fastly.steamstatic.com/images/11814497/0213eb254a8e3d7170ce57876ca978da02bd67e1_960x311.jpg"
+            class="img-fluid mb-3"
+            alt="Patch Notes"
+            style="width: 100%; max-width: 1100px; height: auto;"
+          >
+
+          <p class="mb-1">
+            <span style="color: lightblue; font-size: 1.5rem;">PUBLICADO EL</span>
+            <span style="color: white; font-size: 1.5rem;"> 17 JUN</span>
+          </p>
+
+          <h5 class="card-title mt-3">The Five Nights at Freddy's chapter is now available on Steam!</h5>
+          <p class="card-subtitle" style="font-size: 1.3rem;">Rumbling metal. Laughter that tears. Music to his ears.</p>
+        </div>
+
+        <div style="flex: 1 1 auto; margin-top: auto; padding-top: 30px;">
+          <p class="card-text mb-4" style="color: #ccc;">
+            Dead by Daylight: Five Nights at Freddy's includes a new killer, Springtrap.<br>
+            Purchasing this accessory will unlock the exclusive Pizza Stack badge and the Vent banner.
+          </p>
+
+          <div class="ratio ratio-16x9 mb-3">
+            <iframe
+              src="https://www.youtube.com/embed/_lsEERSC0Go?si=EgxiCM0Zq7m1j9cj"
+              title="YouTube video player"
+              frameborder="0"
+              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+              referrerpolicy="strict-origin-when-cross-origin"
+              allowfullscreen>
+            </iframe>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
+<!---------------------------------------------------------------------------------------------------------------------------->
 
             <!-- NOTICIA RAINBOW SIX-->
             <div style="display: flex; justify-content: center;">
@@ -196,6 +251,8 @@
                 </div>
             </div>
 
+<!---------------------------------------------------------------------------------------------------------------------------->            
+            
             <!-- NOTICIA DESTINY 2-->
             <div style="display: flex; justify-content: center;">
                 <div class="card d-flex flex-row p-4">
@@ -207,6 +264,60 @@
                     <img src="https://clan.fastly.steamstatic.com/images//8328525/dd768c8f17c834ec58ff6a9f52d76105949365f3.jpg" class="ms-1" alt="Patch Notes">
                 </div>
             </div>
+            
+            <!-- MODELO DESTINY 2-->
+            
+            <div class="modal fade" id="modal1" tabindex="-1" aria-labelledby="modal1Label" aria-hidden="true">
+  <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" style="max-height: 90vh;"> <div class="modal-content bg-two-tone-dark text-white">
+      <div class="modal-header">
+        <h5 class="modal-title" id="modal1Label">The Five Nights at Freddy's chapter is now available on Steam!</h5>
+        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal" aria-label="Cerrar"></button>
+      </div>
+      <div class="modal-body text-start px-4 d-flex flex-column" style="min-height: auto; padding-bottom: 0;"> <div style="flex: 0 0 auto;">
+          <img
+            src="https://clan.fastly.steamstatic.com/images/11814497/0213eb254a8e3d7170ce57876ca978da02bd67e1_960x311.jpg"
+            class="img-fluid mb-3"
+            alt="Patch Notes"
+            style="width: 100%; max-width: 1100px; height: auto;"
+          >
+
+          <p class="mb-1">
+            <span style="color: lightblue; font-size: 1.5rem;">PUBLICADO EL</span>
+            <span style="color: white; font-size: 1.5rem;"> 9 JUL</span>
+          </p>
+
+          <h5 class="card-title mt-3">Destiny 2: The Edge of Fate Developer Insights | Taking Control</h5>
+          <p class="card-subtitle" style="font-size: 1.3rem;">Rumbling metal. Laughter that tears. Music to his ears.</p>
+        </div>
+
+          <div style="flex: 1 1 auto; margin-top: auto; padding-top: 30px;">
+              <p class="card-text mb-4" style="color: #ccc;">
+                  Our development team explores the idea of control and how this will affect your Guardian’s journey on Kepler.<br>
+                  Destiny 2: The Edge of Fate // July 15, 2025
+              </p>
+
+              <div class="ratio ratio-16x9 mb-3">
+                  <div class="ratio ratio-16x9 mb-3">
+                      <iframe
+                          src="https://www.youtube.com/embed/1OyuqXSAf7s?si=HYWquEneBWb8yI4a"
+                          title="YouTube video player"
+                          frameborder="0"
+                          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                          referrerpolicy="strict-origin-when-cross-origin"
+                          allowfullscreen>
+                      </iframe>
+                  </div>
+              </div>
+          </div>
+      </div>
+      <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+      </div>
+  </div>
+</div>
+            
+<!---------------------------------------------------------------------------------------------------------------------------->            
 
             <!-- NOTICIA DUNE AWEKAING-->
             <div style="display: flex; justify-content: center;">
