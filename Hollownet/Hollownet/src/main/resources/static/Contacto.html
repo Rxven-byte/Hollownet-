@@ -1,148 +1,176 @@
 <!DOCTYPE html>
-<!--
-Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
-Click nbfs://nbhost/SystemFileSystem/Templates/Other/html.html to edit this template
--->
-
-<!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8">
-  <title>Contacto - HollowNet</title>
-  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&display=swap" rel="stylesheet">
-  <style>
-    body {
-      margin: 0;
-      padding-top: 110px;
-      background-color: #1D124D;
-      font-family: 'Courier New', monospace;
-      color: #FFFFFF;
-      text-align: center;
-    }
+    <head>
+        <meta charset="UTF-8">
+        <title>Contacto - HollowNet</title>
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="css/header.css">
+        <link rel="stylesheet" href="css/slider.css">
+        <link rel="stylesheet" href="css/hero.css">
+        <style>           
 
-    header {
-      position: fixed;
-      top: 0;
-      width: 100%;
-      background-color: #621FBE;
-      color: white;
-      padding: 14px 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      box-shadow: 0 6px 12px rgba(0,0,0,0.3);
-      z-index: 999;
-      flex-wrap: wrap;
-    }
+            body {
+                background-color: #130344;
+                color: #ffffff;
+                font-family: 'Segoe UI', sans-serif;
+            }
 
-    .logo {
-      height: 70px;
-      margin-right: 12px;
-    }
+            header {
+                background-color: #1D124D;
+            }
+            
+            form#contactForm {
+                background-color: #320D6D;
+                border-radius: 12px;
+                padding: 40px 30px;
+                max-width: 500px;
+                margin: 60px auto;
+                box-shadow: 0 4px 10px rgba(0,0,0,0.4);
+            }
 
-    .header-left {
-      display: flex;
-      align-items: center;
-      flex: 1;
-      min-width: 250px;
-    }
+            form#contactForm h2 {
+                font-family: 'Press Start 2P', monospace;
+                font-size: 1.1em;
+                text-align: center;
+                color: #ffffff;
+                margin-bottom: 25px;
+                letter-spacing: 1px;
+            }
 
-    .site-title {
-      margin-left: 10px;
-      font-size: 2em;
-      font-family: 'Press Start 2P', monospace;
-      white-space: nowrap;
-    }
+            form#contactForm label {
+                display: block;
+                margin: 16px 0 6px;
+                font-weight: bold;
+                font-size: 0.95em;
+            }
 
-    nav {
-      display: flex;
-      flex-wrap: wrap;
-      justify-content: center;
-      gap: 12px;
-      flex: 3;
-      padding-top: 6px;
-    }
+            form#contactForm input,
+            form#contactForm textarea {
+                width: 100%;
+                padding: 12px;
+                border-radius: 6px;
+                border: 2px solid #621FBE;
+                background-color: #1D124D;
+                color: #FFFFFF;
+                font-size: 1em;
+                box-sizing: border-box;
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            }
 
-    nav a {
-      color: #FFFFFF;
-      text-decoration: none;
-      font-weight: bold;
-      padding: 5px 8px;
-      border-radius: 4px;
-      font-size: 15px;
-      transition: all 0.3s ease;
-    }
+            form#contactForm input:focus,
+            form#contactForm textarea:focus {
+                outline: 3px solid #A584E8;
+                outline-offset: 2px;
+                border-color: #A584E8;
+                box-shadow: 0 0 6px #A584E8;
+            }
 
-    nav a:hover {
-      background-color: #320D6D;
-      color: #A584E8;
-    }
+            form#contactForm button {
+                display: inline-block;
+                background-color: #621FBE;
+                color: #FFFFFF;
+                font-weight: bold;
+                border: none;
+                border-radius: 8px;
+                padding: 14px 20px;
+                margin-top: 25px;
+                font-size: 1em;
+                cursor: pointer;
+                width: 100%;
+                transition: background-color 0.3s ease;
+                text-transform: uppercase;
+                letter-spacing: 1px;
+            }
 
-    main {
-      padding: 40px 20px;
-    }
+            form#contactForm button:hover {
+                background-color: #A584E8;
+                color: #1D124D;
+            }
 
-    .contacto-box {
-      background-color: #320D6D;
-      border-radius: 12px;
-      padding: 30px;
-      max-width: 500px;
-      margin: 40px auto;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.4);
-    }
+            #feedback {
+                margin-top: 15px;
+                font-weight: bold;
+                text-align: center;
+                font-size: 0.95em;
+            }
 
-    .contacto-box h2 {
-      font-family: 'Press Start 2P', monospace;
-      font-size: 1.2em;
-      margin-bottom: 20px;
-      color: #A584E8;
-    }
+            #feedback.error {
+                color: #FF6B6B;
+            }
 
-    .contacto-box p {
-      font-size: 1em;
-      color: #E0E0E0;
-      margin: 10px 0;
-    }
+            #feedback.exito {
+                color: #7CFC00;
+            }
 
-    .emoji {
-      font-size: 1.2em;
-      margin-right: 6px;
-    }
+            @media (max-width: 600px) {
+                form#contactForm {
+                    margin: 30px 15px;
+                    padding: 25px 20px;
+                }
+            }
+        </style>
+    </head>
+    <body>
+        <header>
+            <div class="header-left">
+                <a href="index.html">
+                    <img src="images/Robot.png" alt="Logo" class="logo">
+                </a>
+                <h1 class="site-title">HollowNet</h1>
+            </div>
 
-    .extra-cute {
-      margin-top: 30px;
-      font-style: italic;
-      color: #f0f3f4;
-    }
-  </style>
-</head>
-<body>
-  <header>
-    <div class="header-left">
-      <a href="index.html">
-        <img src="Robot.png" alt="HollowNet Logo" class="logo">
-      </a>
-      <h1 class="site-title">HollowNet</h1>
-    </div>
-    <nav>
-      <a href="index.html">Inicio</a>
-      <a href="noticias.html">Noticias</a>
-      <a href="Lanzamientos.html">Lanzamientos</a>
-      <a href="Reviews.html">Reviews</a>
-      <a href="Contacto.html">Contacto</a>
-      <a href="Registro.html">Registro</a>
-      <a href="Login.html">Login</a>
-      <a href="Acerca.html">Acerca</a>
-    </nav>
-  </header>
+            <nav class="nav-principal">
+                <div class="menu-left">
+                    <a href="index.html">Inicio</a>
+                    <a href="noticias.html">Noticias</a>
+                    <a href="Tienda.html">Tienda</a>
+                    <a href="Contacto.html">Contacto</a>
+                </div>
 
-  <main>
-    <div class="contacto-box">
-      <h2>Contacto</h2>
-      <p><span class="emoji">💌</span>Correo: <strong>hollownet@gmail.com</strong></p>
-      <p><span class="emoji">📱</span>Celular: <strong>+506 8888-3332</strong></p>
-      <p class="extra-cute"> Contactanos si quieres ser parte de nuestro equipo</p>
-    </div>
-  </main>
-</body>
+                <div class="menu-right">
+                    <a href="Registro.html">Registro</a>
+                    <a href="newLogin.html">Login</a>
+                </div>
+            </nav>
+        </header>
+
+        <form id="contactForm">
+            <h2>Enviar mensaje a administradores</h2>
+
+            <label for="username">Nombre de usuario</label>
+            <input type="text" id="username" name="username">
+
+            <label for="email">Correo electrónico</label>
+            <input type="email" id="email" name="email">
+
+            <label for="mensaje">Mensaje</label>
+            <textarea id="mensaje" name="mensaje" rows="4"></textarea>
+
+            <button type="submit">Enviar Mensaje</button>
+
+            <p id="feedback" class=""></p>
+        </form>
+        
+        <script>
+            const form = document.getElementById('contactForm');
+            const feedback = document.getElementById('feedback');
+
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+
+                const username = document.getElementById('username').value.trim();
+                const email = document.getElementById('email').value.trim();
+                const mensaje = document.getElementById('mensaje').value.trim();
+
+                if (username === '' || email === '' || mensaje === '') {
+                    feedback.textContent = '⚠️ Debes llenar todos los campos antes de enviar.';
+                    feedback.className = 'error';
+                } else {
+                    feedback.textContent = '✅ ¡Mensaje enviado con éxito!';
+                    feedback.className = 'exito';
+                    form.reset();
+                }
+            });
+        </script>
+    </body>
 </html>
