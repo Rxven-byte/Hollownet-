@@ -4,6 +4,9 @@
   <meta charset="UTF-8">
   <title>Tienda - HollowNet</title>
   <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+        <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="css/header.css">
   <link rel="stylesheet" href="css/tienda.css">
   <style>
@@ -151,29 +154,34 @@ background-size: cover;
       text-decoration: underline;
     }
   </style>
-</head>
-<body>
+ <header>
+            <div class="container-fluid d-flex justify-content-between align-items-center py-2 px-4">
+                <div class="header-left d-flex align-items-center">
+                    <a href="index.html" class="d-flex align-items-center text-decoration-none">
+                        <img src="images/HollowWhiteFondo.png" alt="Logo" class="logo me-2">
+                        <h1 class="site-title h4 mb-0">HollowNet</h1>
+                    </a>
+                </div>
+                <nav class="nav-principal d-flex align-items-center">
+                    <div class="menu-left d-flex">
+                        <a href="index.html" class="nav-link">Inicio</a>
+                        <a href="noticias.html" class="nav-link">Noticias</a>
+                        <a href="Tienda.html" class="nav-link">Tienda</a>
+                        <a href="Contacto.html" class="nav-link">Contacto</a>
+                    </div>
+                    <div class="menu-right d-flex ms-4">
+                        <a href="Registro.html" class="custom-btn">Registro</a>
+                        <a href="newLogin.html" class="custom-btn">Login</a>
+                        <a href="#" class="custom-btn"><i class="bi bi-heart"></i></a>
+                        <a href="#" class="custom-btn"><i class="bi bi-cart"></i></a>
+                        <a href="#" class="custom-btn"><i class="bi bi-person-circle"></i></a>
+                    </div>
 
-  <header>
-    <div class="header-left">
-      <a href="index.html">
-        <img src="images/Robot.png" alt="Logo" class="logo">
-      </a>
-      <h1 class="site-title">HollowNet</h1>
-    </div>
-    <nav class="nav-principal">
-      <div class="menu-left">
-        <a href="index.html">Inicio</a>
-        <a href="noticias.html">Noticias</a>
-        <a href="Tienda.html">Tienda</a>
-        <a href="Contacto.html">Contacto</a>
-      </div>
-      <div class="menu-right">
-        <a href="Registro.html">Registro</a>
-        <a href="newLogin.html">Login</a>
-      </div>
-    </nav>
-  </header>
+
+
+                </nav>
+            </div>
+        </header>
 
   <h2 class="section-title">Mas Vendidos</h2>
   <div class="carousel-container">
@@ -198,42 +206,41 @@ background-size: cover;
   <h2 class="section-title">Catalogo</h2>
   
   
-  <div class="juegos-grid">
-    <div class="juego-card">
-      <img src="images/kart.jpg" alt="Kart Racing">
-      <div class="juego-info">
-        <h3>Kart Racing X</h3>
-        <p>Categoria: Carreras</p>
-        <p class="precio">₡1</p>
-        <a href="#" class="boton-comprar">Comprar</a>
-        <a class="ver-trailer" href="https://www.youtube.com/watch?v=TlP3U1JY4i4" target="_blank">Trailer</a>
-      </div>
-    </div>
- 
-      
-      <div class="juego-card">
-      <img src="images/minecraft.jpg" alt="Minecraft">
-      <div class="juego-info">
-        <h3>Minecraft</h3>
-        <p>Categoria: Sandbox</p>
-        <p class="precio">₡2.</p>
-        <a href="#" class="boton-comprar">Comprar</a>
-        <a class="ver-trailer" href="https://www.youtube.com/watch?v=MmB9b5njVbA" target="_blank">Trailer</a>
-      </div>
-    </div>
-   
-      
-      <div class="juego-card">
-      <img src="images/spyro.jpg" alt="Spyro Remastered">
-      <div class="juego-info">
-        <h3>Spyro Remastered</h3>
-        <p>Categoria: Aventura</p>
-        <p class="precio">₡10</p>
-        <a href="#" class="boton-comprar">Comprar</a>
-        <a class="ver-trailer" href="https://www.youtube.com/watch?v=_GurUw3YgO0" target="_blank">Trailer</a>
-      </div>
+ <div class="juegos-grid">
+  <div class="juego-card">
+    <img src="images/kart.jpg" alt="Kart Racing">
+    <div class="juego-info">
+      <h3>Kart Racing X</h3>
+      <p>Categoria: Carreras</p>
+      <p class="precio">₡1</p>
+      <a href="DetalleTienda.html" class="boton-comprar">Comprar</a>
+      <a class="ver-trailer" href="https://www.youtube.com/watch?v=TlP3U1JY4i4" target="_blank">Trailer</a>
     </div>
   </div>
+
+  <div class="juego-card">
+    <img src="images/minecraft.jpg" alt="Minecraft">
+    <div class="juego-info">
+      <h3>Minecraft</h3>
+      <p>Categoria: Sandbox</p>
+      <p class="precio">₡2</p>
+      <a href="DetalleTienda.html" class="boton-comprar">Comprar</a>
+      <a class="ver-trailer" href="https://www.youtube.com/watch?v=MmB9b5njVbA" target="_blank">Trailer</a>
+    </div>
+  </div>
+
+  <div class="juego-card">
+    <img src="images/spyro.jpg" alt="Spyro Remastered">
+    <div class="juego-info">
+      <h3>Spyro Remastered</h3>
+      <p>Categoria: Aventura</p>
+      <p class="precio">₡10</p>
+      <a href="DetalleTienda.html" class="boton-comprar">Comprar</a>
+      <a class="ver-trailer" href="https://www.youtube.com/watch?v=_GurUw3YgO0" target="_blank">Trailer</a>
+    </div>
+  </div>
+</div>
+
 
   <script>
     let index = 0;
