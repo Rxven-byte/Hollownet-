@@ -2,7 +2,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-package Hollownet.demo.Security;
+package Hollownet.demo;
 
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
@@ -13,13 +13,6 @@ import org.springframework.security.web.authentication.AuthenticationSuccessHand
 import org.springframework.stereotype.Component;
 import java.io.IOException;
 import java.util.Collection;
-
-/**
- *
- * @author caleb
- */
-
-
 
 @Component
 public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHandler {
@@ -41,3 +34,5 @@ public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHan
         response.sendRedirect(redirectUrl);
     }
 }
+
+
