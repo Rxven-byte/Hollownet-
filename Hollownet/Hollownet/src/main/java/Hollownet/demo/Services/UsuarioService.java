@@ -8,6 +8,7 @@ import Hollownet.demo.Entities.Usuario;
 import Hollownet.demo.Repository.UsuarioRepository;
 import java.util.List;
 import java.util.Optional;
+import org.springframework.stereotype.Service;
 
 @Service
 public class UsuarioService implements IUsuarioService{
