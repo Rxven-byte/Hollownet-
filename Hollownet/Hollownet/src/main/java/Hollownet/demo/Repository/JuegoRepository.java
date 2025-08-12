@@ -12,5 +12,5 @@ import org.springframework.data.repository.CrudRepository;
  * @author PC
  */
 public interface JuegoRepository extends CrudRepository<Juego, Long>{
-    
+    Juego findByNombre(String nombre);
 }

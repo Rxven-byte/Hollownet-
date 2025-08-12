@@ -13,31 +13,40 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 @Service
-public class JuegoService {
+public class JuegoService implements IJuegoService{
     
     @Autowired
     private JuegoRepository juegoRepository;
     
     
+    @Override
     public List<Juego> findAll(){
         return (List<Juego>) this.juegoRepository.findAll();
     }
     
+    @Override
     public Juego save (Juego juego){
         return juegoRepository.save(juego);
     }
     
-    public Optional<Juego> getById(Long id){
+    @Override
+    public Optional<Juego> getById(long id) {
         return juegoRepository.findById(id);
     }
     
     @Transactional
-    public Optional<Juego> delete(Long Id) {
-        Optional<Juego> juego = this.getById(Id);
+    @Override
+    public Optional<Juego> delete(long id) {
+        Optional<Juego> juego = this.getById(id);
         if(juego.isPresent()){
-            this.juegoRepository.deleteById(Id);
+            this.juegoRepository.deleteById(id);
         }
         return juego;
+    }
+
+    @Override
+    public Juego findByNombre(String nombre) {
+        return juegoRepository.findByNombre(nombre);
     }
     
 }
