@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org">
+  <head>
+    <meta charset="UTF-8">
+    <title>Registrarse - HollowNet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+    <style>
+      body { margin:0; background-color:#130344; font-family:'Segoe UI',sans-serif; color:#fff; min-height:100vh; display:flex; flex-direction:column; }
+      .page-content { flex:1; display:flex; justify-content:center; align-items:center; padding:40px 20px; }
+      .login-box { background-color:#fff; width:100%; max-width:440px; border-radius:14px; padding:26px 32px; box-shadow:0 0 16px rgba(165,132,232,.3); }
+      .login-box h5 { color:#130344; font-weight:bold; font-size:1.4em; margin-bottom:20px; text-align:left; }
+      .form-label { color:#130344; font-weight:600; }
+      .form-control { border:1px solid #ccc; border-radius:8px; }
+      .form-control::placeholder { color:#bbb; }
+      .btn-primary { background-color:#621FBE; border:none; font-weight:bold; border-radius:8px; }
+      .btn-primary:hover { background-color:#4b16a3; }
+      hr { margin:30px 0 20px; border-color:#ddd; }
+    </style>
+  </head>
+  <body>
+
+    <!-- HEADER -->
+    <header>
+      <div class="container-fluid d-flex justify-content-between align-items-center py-2 px-4">
+        <div class="header-left d-flex align-items-center">
+          <a href="index.html" th:href="@{/}" class="d-flex align-items-center text-decoration-none">
+            <img src="images/HollowWhiteFondo.png" th:src="@{/images/HollowWhiteFondo.png}" alt="Logo" class="logo me-2">
+            <h1 class="site-title h4 mb-0">HollowNet</h1>
+          </a>
+        </div>
+        <nav class="nav-principal d-flex align-items-center">
+          <div class="menu-left d-flex">
+            <a href="index.html" th:href="@{/}" class="nav-link">Inicio</a>
+            <a href="noticias.html" class="nav-link">Noticias</a>
+            <a href="Tienda.html" class="nav-link">Tienda</a>
+            <a href="Contacto.html" class="nav-link">Contacto</a>
+          </div>
+          <div class="menu-right d-flex ms-4">
+            <a href="Registro.html" th:href="@{/Registro}" class="custom-btn">Registro</a>
+            <a href="Login.html" th:href="@{/Login}" class="custom-btn">Login</a>
+            <a href="#" class="custom-btn"><i class="bi bi-heart"></i></a>
+            <a href="#" class="custom-btn"><i class="bi bi-cart"></i></a>
+            <a href="#" class="custom-btn"><i class="bi bi-person-circle"></i></a>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- Caja de registro -->
+    <div class="page-content">
+      <div class="login-box">
+        <h5>Crea tu cuenta</h5>
+
+        <!-- Mensajes de estado -->
+        <div th:if="${param.error}" class="alert alert-danger mt-2">
+          <span th:switch="${param.error}">
+            <span th:case="'pass'">Las contraseñas no coinciden.</span>
+            <span th:case="'exists'">El usuario o el correo ya está registrado.</span>
+            <span th:case="*">No se pudo completar el registro.</span>
+          </span>
+        </div>
+
+        <form th:action="@{/Registro}" method="post">
+          <div class="mb-3 text-start">
+            <label for="nombre" class="form-label">Usuario</label>
+            <input type="text" class="form-control" id="nombre" name="nombre" placeholder="Tu usuario" required>
+          </div>
+
+          <div class="mb-3 text-start">
+            <label for="email" class="form-label">Correo</label>
+            <input type="email" class="form-control" id="email" name="email" placeholder="tucorreo@ejemplo.com" required>
+          </div>
+
+          <div class="mb-3 text-start">
+            <label for="password" class="form-label">Contraseña</label>
+            <input type="password" class="form-control" id="password" name="password" placeholder="Contraseña" required>
+          </div>
+
+          <div class="mb-3 text-start">
+            <label for="confirm" class="form-label">Confirmar contraseña</label>
+            <input type="password" class="form-control" id="confirm" name="confirmPassword" placeholder="Repite la contraseña" required>
+          </div>
+
+          <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+
+          <button type="submit" class="btn btn-primary w-100 mt-2">Registrarme</button>
+        </form>
+
+        <hr>
+
+        <p class="text-center" style="color:#130344;">
+          ¿Ya tienes cuenta? <a th:href="@{/Login}">Inicia sesión</a>
+        </p>
+      </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+  </body>
+</html>

@@ -1,15 +1,6 @@
-/*
- * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
- * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
- */
 package Hollownet.demo;
 
-/**
- *
- * @author PC
- */
 import Hollownet.demo.Services.UserService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
@@ -24,12 +15,11 @@ import org.springframework.security.web.SecurityFilterChain;
 public class SecurityConfig {
 
     private final AppAuthenticationSuccessHandler successHandler;
+    private final UserService userService; // implements UserDetailsService
 
-    @Autowired
-    private UserService userService; // implements UserDetailsService
-
-    public SecurityConfig(AppAuthenticationSuccessHandler successHandler) {
+    public SecurityConfig(AppAuthenticationSuccessHandler successHandler, UserService userService) {
         this.successHandler = successHandler;
+        this.userService = userService;
     }
 
     @Bean
@@ -39,40 +29,38 @@ public class SecurityConfig {
 
     @Bean
     public DaoAuthenticationProvider authenticationProvider() {
-        DaoAuthenticationProvider provider = new DaoAuthenticationProvider(); // <-- sin args
-        provider.setUserDetailsService(userService);
-        provider.setPasswordEncoder(passwordEncoder());
-        return provider;
+        DaoAuthenticationProvider authProvider = new DaoAuthenticationProvider();
+        authProvider.setUserDetailsService(userService);
+        authProvider.setPasswordEncoder(passwordEncoder());
+        return authProvider;
     }
 
     @Bean
-    public SecurityFilterChain filter(HttpSecurity http) throws Exception {
+    public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            .authenticationProvider(authenticationProvider())
-            .authorizeHttpRequests(a -> a
-                .requestMatchers(
-                    "/", "/index.html", "/Inicio.html", "/Contacto.html", "/Acerca.html",
-                    "/Tienda.html", "/noticias.html",
-                    "/css/**", "/js/**", "/images/**", "/webjars/**",
-                    "/Registro.html", "/Login", "/Login.html"
-                ).permitAll()
-                .requestMatchers(
-                    "/DetalleTienda.html", "/carrito.html", "/carritofinal.html",
-                    "/libreria.html", "/detalle-noticia.html"
-                ).hasAnyRole("USER","ADMIN")
-                .requestMatchers("/admin.html", "/admin-**.html").hasRole("ADMIN")
+                // Qué rutas se permiten sin login
+                .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/", "/Login", "/register", "/Registro", "/Registro.html",
+                        "/css/**", "/js/**", "/images/**", "/webjars/**")
+                .permitAll()
                 .anyRequest().authenticated()
-            )
-            .formLogin(f -> f
-                .loginPage("/Login")
-                .successHandler(successHandler)
-                .permitAll()
-            )
-            .logout(l -> l
+                )
+                // Config de formulario de login
+                .formLogin(form -> form
+                .loginPage("/Login").permitAll() // tu página de login 
+                .loginProcessingUrl("/login") // a dónde hace POST el formulario
+                .successHandler(successHandler) 
+                .failureUrl("/Login?error=true")
+                )
+                .logout(logout -> logout
                 .logoutUrl("/logout")
-                .logoutSuccessUrl("/index.html")
+                .logoutSuccessUrl("/Login?logout")
+                .deleteCookies("JSESSIONID")
+                .invalidateHttpSession(true)
                 .permitAll()
-            );
+                )
+                .authenticationProvider(authenticationProvider());
+
         return http.build();
     }
 }
