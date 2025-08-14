@@ -37,7 +37,7 @@ public class WebConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registro) {
-        registro.addViewController("/").setViewName("productos"); // Ruta raíz ("/") muestra la vista "personas"
+        //registro.addViewController("/").setViewName("productos"); // Ruta raíz ("/") muestra la vista "personas"
         registro.addViewController("/login");                    // Ruta "/login" usa la vista por defecto "login"
         registro.addViewController("/errores/403").setViewName("/errores/403"); // Ruta para acceso denegado
     }

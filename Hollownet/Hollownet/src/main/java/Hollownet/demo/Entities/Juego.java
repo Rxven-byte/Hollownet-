@@ -2,7 +2,6 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/Licenses/license-default.txt to change this license
  * Click nbfs://nbhost/SystemFileSystem/Templates/Classes/Class.java to edit this template
  */
-
 package Hollownet.demo.Entities;
 
 import jakarta.persistence.Column;
@@ -12,15 +11,14 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
-
-
 @Entity
-@Table(name = "juego") 
+@Table(name = "juego")
 public class Juego {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    
+
     @Column(nullable = false)
     private Integer precio;
 
@@ -36,6 +34,17 @@ public class Juego {
     @Column(length = 500)
     private String video;
 
+    @Column(length = 50)
+    private String nombre;
+
+    public String getNombre() {
+        return nombre;
+    }
+
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
+
     public Juego() {
     }
 
@@ -45,7 +54,7 @@ public class Juego {
         this.codigo = codigo;
         this.informacion = informacion;
         this.video = video;
-    }        
+    }
 
     public Long getId() {
         return id;

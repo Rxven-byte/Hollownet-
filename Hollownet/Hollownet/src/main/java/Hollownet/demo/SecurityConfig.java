@@ -54,7 +54,7 @@ public class SecurityConfig {
                     "/", "/index.html", "/Inicio.html", "/Contacto.html", "/Acerca.html",
                     "/Tienda.html", "/noticias.html",
                     "/css/**", "/js/**", "/images/**", "/webjars/**",
-                    "/Registro.html", "/Login"
+                    "/Registro.html", "/Login", "/Login.html"
                 ).permitAll()
                 .requestMatchers(
                     "/DetalleTienda.html", "/carrito.html", "/carritofinal.html",
