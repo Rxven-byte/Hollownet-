@@ -38,29 +38,40 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-                // Qué rutas se permiten sin login
-                .authorizeHttpRequests(auth -> auth
-                .requestMatchers("/", "/Login", "/register", "/Registro", "/Registro.html",
-                        "/css/**", "/js/**", "/images/**", "/webjars/**")
-                .permitAll()
+            // Rutas públicas
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers(
+                    "/", "/index", "/index.html",
+                    "/Login", "/Registro", "/Registro.html",
+                    "/DetalleTienda.html", "/tienda.html",
+                    "/noticias", "/noticias.html",
+                    "/Contacto", "/Contacto.html",
+                    "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
+                ).permitAll()
+                // Zona admin
+                .requestMatchers("/admin/**").hasRole("ADMIN")
+                // Todo lo demás requiere autenticación
                 .anyRequest().authenticated()
-                )
-                // Config de formulario de login
-                .formLogin(form -> form
-                .loginPage("/Login").permitAll() // tu página de login 
-                .loginProcessingUrl("/login") // a dónde hace POST el formulario
-                .successHandler(successHandler) 
+            )
+            // Login form
+            .formLogin(form -> form
+                .loginPage("/Login").permitAll()   // tu página de login (GET)
+                .loginProcessingUrl("/login")      // endpoint que procesa el POST
+                .successHandler(successHandler)    // ← redirige a /admin si es ADMIN, a / si no
                 .failureUrl("/Login?error=true")
-                )
-                .logout(logout -> logout
+            )
+            // Logout
+            .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/Login?logout")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .permitAll()
-                )
-                .authenticationProvider(authenticationProvider());
+            )
+            // Proveedor de autenticación
+            .authenticationProvider(authenticationProvider());
 
+        // CSRF habilitado por defecto (correcto para formularios)
         return http.build();
     }
 }

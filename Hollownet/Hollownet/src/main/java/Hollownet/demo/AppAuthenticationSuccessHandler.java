@@ -1,10 +1,12 @@
 package Hollownet.demo;
 
+import java.io.IOException;
+import java.util.Collection;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import java.io.IOException;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.web.DefaultRedirectStrategy;
 import org.springframework.security.web.RedirectStrategy;
 import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
@@ -20,7 +22,10 @@ public class AppAuthenticationSuccessHandler implements AuthenticationSuccessHan
                                         HttpServletResponse response,
                                         Authentication authentication)
             throws IOException, ServletException {
-        // Redirigir SIEMPRE al index después de loguear
-        redirectStrategy.sendRedirect(request, response, "/");
+
+        Collection<? extends GrantedAuthority> auths = authentication.getAuthorities();
+        boolean isAdmin = auths.stream().anyMatch(a -> "ROLE_ADMIN".equals(a.getAuthority()));
+
+        redirectStrategy.sendRedirect(request, response, isAdmin ? "/admin" : "/");
     }
 }

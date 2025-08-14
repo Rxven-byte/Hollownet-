@@ -59,7 +59,7 @@ public class LoginController {
             u.setEmail(email.trim());
             u.setPassword(passwordEncoder.encode(password));
             u.setEnabled(true);
-            u.setRoles("USER");  // evita NOT NULL
+            u.setRoles("USER");  
 
             usuarioRepository.save(u);
         } catch (DataIntegrityViolationException e) {
