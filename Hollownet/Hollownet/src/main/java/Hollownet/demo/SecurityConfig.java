@@ -46,10 +46,12 @@ public class SecurityConfig {
                     "/DetalleTienda.html", "/tienda.html",
                     "/noticias", "/noticias.html",
                     "/Contacto", "/Contacto.html",
+                    
                     "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
                 ).permitAll()
                 // Zona admin
-                .requestMatchers("/admin/**").hasRole("ADMIN")
+                .requestMatchers("/admin/**","/adminUsuario",
+                        "/adminUsuario/**").hasRole("ADMIN")
                 // Todo lo demás requiere autenticación
                 .anyRequest().authenticated()
             )

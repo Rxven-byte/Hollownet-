@@ -34,17 +34,22 @@
                     </div>
 
                     <!--  cambia según autenticación -->
-                    
-                    
+
+
                     <div class="menu-right d-flex ms-4 align-items-center">
-                        <!-- Si NO está autenticado -->
+                        <!-- NO autenticado -->
                         <div sec:authorize="isAnonymous()" class="d-flex gap-2">
                             <a href="Registro.html" th:href="@{/Registro}" class="custom-btn">Registro</a>
                             <a href="Login.html" th:href="@{/Login}" class="custom-btn">Login</a>
                         </div>
 
-                        <!-- Si  autenticado -->
+                        <!-- SÍ autenticado -->
                         <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-3">
+                          
+                            
+                            <!-- Botón solo para ADMIN -->
+                            <a sec:authorize="hasRole('ADMIN')" th:href="@{/admin}" class="custom-btn">Administrar</a>
+
                             <span class="text-white fw-semibold">
                                 Hola, <span sec:authentication="name"></span>
                             </span>
@@ -54,6 +59,7 @@
                             </form>
                         </div>
                     </div>
+
                 </nav>
             </div>
         </header>

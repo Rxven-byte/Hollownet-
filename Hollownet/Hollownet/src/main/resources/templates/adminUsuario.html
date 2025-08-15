@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
+  <head>
+    <meta charset="UTF-8">
+    <title>Usuarios - Admin | HollowNet</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Estilos base -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="css/header.css">
+
+    <style>
+      /* ===== Fondo y layout ===== */
+      body {
+        margin: 0;
+        background-color: #130344;
+        font-family: 'Segoe UI', sans-serif;
+        color: #ffffff;
+        background-image: url('../images/fondo admin.png');
+        background-size: cover;
+        background-position: center;
+        background-repeat: no-repeat;
+        background-attachment: fixed;
+      }
+      /* Asegura que el contenido quede por encima del overlay de ojos */
+      header, main { position: relative; z-index: 1; }
+
+      main { max-width: 1200px; margin: 100px auto 60px; padding: 20px; border-radius: 12px; }
+
+      /* ===== Cajas oscuras de usuarios ===== */
+      .admin-panel {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+        gap: 30px;
+        margin-top: 20px;
+      }
+      .admin-tile {
+        background-color: rgba(26, 11, 45, 0.85);
+        border: 2px solid #2c0f6e;
+        border-radius: 16px;
+        padding: 20px;
+        transition: transform .2s, box-shadow .2s;
+      }
+      .admin-tile:hover { transform: scale(1.03); box-shadow: 0 0 15px rgba(165,132,232,.4); }
+
+      .user-title { font-size: 1.15rem; font-weight: 700; margin-bottom: .25rem; color: #fff; }
+      .user-sub { font-size: .95rem; color: #cfc7e8; margin: 0; }
+      .role-badge { display: inline-block; background:#5b2bbd; border-radius: 999px; padding: .15rem .6rem; margin-right:.3rem; margin-top:.4rem; font-size:.8rem; }
+      .tile-footer { display: flex; justify-content: space-between; align-items: center; margin-top: 14px; }
+      .btn-danger { border-radius: 10px; }
+      .muted { color:#9aa; font-size: .85rem; }
+
+      /* ===== Overlay de ojitos (solo fondo, sin textos) ===== */
+      .eyes-overlay {
+        position: fixed;
+        inset: 0;                 /* top:0; right:0; bottom:0; left:0 */
+        pointer-events: none;     /* no bloquea clics del usuario */
+        z-index: 0;               /* por detrás del contenido */
+        overflow: hidden;
+      }
+      .eyes-overlay .eyes-pair {
+        position: absolute;
+        display: flex;
+        gap: 8px;
+        justify-content: center;
+        align-items: center;
+        opacity: 0.85;            /* un pelín traslúcido */
+      }
+      .eyes-overlay .eye {
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
+        background-color: currentColor;
+        color: black;
+        animation: blink 3s ease-in-out infinite;
+        filter: drop-shadow(0 0 8px currentColor);
+      }
+      @keyframes blink {
+        0%, 90%, 100% {
+          height: 8px;
+          border-radius: 50%;
+          box-shadow: 0 0 10px 2px currentColor;
+        }
+        95%, 97% {
+          height: 1px;
+          border-radius: 50% 50% 0 0;
+          box-shadow: 0 0 1px 0 currentColor;
+        }
+      }
+    </style>
+  </head>
+  <body>
+
+    <!-- ====== HEADER  ====== -->
+    <header>
+      <div class="container-fluid d-flex justify-content-between align-items-center py-2 px-4">
+        <div class="header-left d-flex align-items-center">
+          <a href="index.html" th:href="@{/}" class="d-flex align-items-center text-decoration-none">
+            <img src="images/HollowWhiteFondo.png" th:src="@{/images/HollowWhiteFondo.png}" alt="Logo" class="logo me-2">
+            <h1 class="site-title h4 mb-0">HollowNet</h1>
+          </a>
+        </div>
+
+        <nav class="nav-principal d-flex align-items-center">
+          <div class="menu-left d-flex">
+            <a href="index.html" th:href="@{/}" class="nav-link">Inicio</a>
+            <a href="noticias.html" class="nav-link">Noticias</a>
+            <a href="Tienda.html" class="nav-link">Tienda</a>
+            <a href="Contacto.html" class="nav-link">Contacto</a>
+          </div>
+
+          <div class="menu-right d-flex ms-4 align-items-center">
+            <!-- NO autenticado -->
+            <div sec:authorize="isAnonymous()" class="d-flex gap-2">
+              <a th:href="@{/Registro}" class="custom-btn">Registro</a>
+              <a th:href="@{/Login}" class="custom-btn">Login</a>
+            </div>
+
+            <!-- Si autenticado -->
+            <div sec:authorize="isAuthenticated()" class="d-flex align-items-center gap-3">
+              <span class="text-white fw-semibold">
+                Hola, <span sec:authentication="name"></span>
+              </span>
+              <form th:action="@{/logout}" method="post" class="d-inline">
+                <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                <button type="submit" class="custom-btn btn btn-outline-light">Salir</button>
+              </form>
+            </div>
+          </div>
+        </nav>
+      </div>
+    </header>
+
+    <!-- ====== CONTENIDO: Usuarios en cajas oscuras ====== -->
+    <main class="container">
+      <div class="d-flex justify-content-between align-items-center">
+        <h2 class="h4 m-0">Usuarios registrados</h2>
+        <span class="muted" th:text="'Total: ' + ${#lists.size(usuarios)}">Total: 0</span>
+      </div>
+
+      <!-- Mensajes -->
+      <div th:if="${msg}" class="alert alert-info py-2 mt-3" th:text="${msg}"></div>
+      <div th:if="${err}" class="alert alert-danger py-2 mt-3" th:text="${err}"></div>
+
+      <!--  usuarios -->
+      <section class="admin-panel mt-3">
+        <div class="admin-tile" th:each="u : ${usuarios}">
+          <div>
+            <div class="user-title" th:text="${u.nombre}">usuario</div>
+            <p class="user-sub" th:text="${u.email}">correo@ejemplo.com</p>
+            <div>
+              <span class="role-badge"
+                    th:each="r : ${#strings.arraySplit(u.roles, ',')}"
+                    th:text="${#strings.prepend('ROLE_', #strings.trim(r))}">ROLE_USER</span>
+            </div>
+          </div>
+
+          <div class="tile-footer">
+            <span class="muted" th:text="${'ID: ' + u.id}">ID: 1</span>
+
+            <form th:action="@{/adminUsuario/{id}/eliminar(id=${u.id})}" method="post"
+                  onsubmit="return confirm('¿Eliminar al usuario ' + this.dataset.username + '?');"
+                  th:attr="data-username=${u.nombre}">
+              <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+              <button type="submit" class="btn btn-danger btn-sm">Eliminar</button>
+            </form>
+          </div>
+        </div>
+
+        <!-- Vacío -->
+        <div class="text-center text-white-50 py-4" th:if="${#lists.isEmpty(usuarios)}">
+          No hay usuarios registrados
+        </div>
+      </section>
+
+      <!-- Codepen ojitos -->
+      <div class="eyes-overlay" id="eyes-overlay"></div>
+    </main>
+
+    <!-- Script de lo que me encontre en Codepen  -->
+    <script>
+      (function () {
+        // Cantidad de pares de ojos a dibujar
+        const COUNT = 40;
+
+        // Colores de 'eyeshine'
+        const colors = ['lightgreen', 'yellow', 'red', 'orange', 'white'];
+
+        const overlay = document.getElementById('eyes-overlay');
+        const vw = window.innerWidth;
+        const vh = window.innerHeight;
+
+        function rnd(min, max) { return Math.random() * (max - min) + min; }
+
+        for (let i = 0; i < COUNT; i++) {
+          const pair = document.createElement('div');
+          pair.className = 'eyes-pair';
+
+          // posición aleatoria dentro del viewport (dejamos márgenes para que no queden pegados a los bordes)
+          const left = rnd(2, 98);   // %
+          const top  = rnd(5, 95);   // %
+          pair.style.left = left + '%';
+          pair.style.top  = top  + '%';
+
+          const delay = rnd(0, 2.5).toFixed(2) + 's';
+          const color = colors[Math.floor(Math.random() * colors.length)];
+
+          const leftEye = document.createElement('div');
+          leftEye.className = 'eye';
+          leftEye.style.color = color;
+          leftEye.style.animationDelay = delay;
+
+          const rightEye = leftEye.cloneNode(true);
+
+          pair.appendChild(leftEye);
+          pair.appendChild(rightEye);
+          overlay.appendChild(pair);
+        }
+
+        // Recalcular posiciones al cambiar tamaño
+        window.addEventListener('resize', () => {
+          // (opcional) podrías regenerar si quieres que se reacomoden,
+          // pero lo dejamos fijo para no distraer mucho en el admin.
+        });
+      })();
+    </script>
+  </body>
+</html>
