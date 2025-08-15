@@ -4,12 +4,9 @@
  */
 package Hollownet.demo.Entities;
 
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+import java.math.BigDecimal;
+import java.time.LocalDateTime;
 
 @Entity
 @Table(name = "juego")
@@ -19,42 +16,35 @@ public class Juego {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(nullable = false)
-    private Integer precio;
-
-    @Column(length = 500)
-    private String imagen;
-
-    @Column(nullable = false, length = 10)
+    @Column(length=32, nullable=false, unique=true)
     private String codigo;
 
-    @Column(length = 100)
-    private String informacion;
+    @Column(length=120, nullable=false)
+    private String titulo;
 
-    @Column(length = 500)
-    private String video;
+    @Column(length=60)
+    private String categoria;
 
-    @Column(length = 50)
-    private String nombre;
+    @Column(precision = 10, scale = 2, nullable=false)
+    private BigDecimal precio = BigDecimal.ZERO;
 
-    public String getNombre() {
-        return nombre;
-    }
+    @Column(nullable=false)
+    private Integer stock = 0;
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
-    }
+    @Column(length=500)
+    private String imagen;        // URL o path (/images/...)
 
-    public Juego() {
-    }
+    @Column(columnDefinition = "TEXT")
+    private String informacion;   // descripción
 
-    public Juego(Integer precio, String imagen, String codigo, String informacion, String video) {
-        this.precio = precio;
-        this.imagen = imagen;
-        this.codigo = codigo;
-        this.informacion = informacion;
-        this.video = video;
-    }
+    @Column(length=500)
+    private String video;         // URL YouTube (opcional)
+
+    @Column(nullable=false)
+    private Boolean activo = true;
+
+    @Column(name="created_at", nullable=false)
+    private LocalDateTime createdAt = LocalDateTime.now();
 
     public Long getId() {
         return id;
@@ -64,12 +54,44 @@ public class Juego {
         this.id = id;
     }
 
-    public Integer getPrecio() {
+    public String getCodigo() {
+        return codigo;
+    }
+
+    public void setCodigo(String codigo) {
+        this.codigo = codigo;
+    }
+
+    public String getTitulo() {
+        return titulo;
+    }
+
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
+    }
+
+    public String getCategoria() {
+        return categoria;
+    }
+
+    public void setCategoria(String categoria) {
+        this.categoria = categoria;
+    }
+
+    public BigDecimal getPrecio() {
         return precio;
     }
 
-    public void setPrecio(Integer precio) {
+    public void setPrecio(BigDecimal precio) {
         this.precio = precio;
+    }
+
+    public Integer getStock() {
+        return stock;
+    }
+
+    public void setStock(Integer stock) {
+        this.stock = stock;
     }
 
     public String getImagen() {
@@ -78,14 +100,6 @@ public class Juego {
 
     public void setImagen(String imagen) {
         this.imagen = imagen;
-    }
-
-    public String getCodigo() {
-        return codigo;
-    }
-
-    public void setCodigo(String codigo) {
-        this.codigo = codigo;
     }
 
     public String getInformacion() {
@@ -103,4 +117,22 @@ public class Juego {
     public void setVideo(String video) {
         this.video = video;
     }
+
+    public Boolean getActivo() {
+        return activo;
+    }
+
+    public void setActivo(Boolean activo) {
+        this.activo = activo;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(LocalDateTime createdAt) {
+        this.createdAt = createdAt;
+    }
 }
+
+

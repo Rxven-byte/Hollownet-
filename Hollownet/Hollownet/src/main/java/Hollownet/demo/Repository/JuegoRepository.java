@@ -5,12 +5,21 @@
 package Hollownet.demo.Repository;
 
 import Hollownet.demo.Entities.Juego;
+import java.util.Collection;
+import java.util.List;
+import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.repository.CrudRepository;
 
 /**
  *
  * @author PC
  */
-public interface JuegoRepository extends CrudRepository<Juego, Long>{
-    Juego findByNombre(String nombre);
+
+
+
+
+public interface JuegoRepository extends JpaRepository<Juego, Long> {
+    List<Juego> findByCodigoIn(Collection<String> codigos);
+    List<Juego> findByActivoTrueOrderByCreatedAtDesc();
+    boolean existsByCodigo(String codigo);
 }

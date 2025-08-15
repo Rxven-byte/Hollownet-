@@ -38,40 +38,45 @@ public class SecurityConfig {
     @Bean
     public SecurityFilterChain filterChain(HttpSecurity http) throws Exception {
         http
-            // Rutas públicas
-            .authorizeHttpRequests(auth -> auth
+                // Rutas públicas
+                .authorizeHttpRequests(auth -> auth
                 .requestMatchers(
-                    "/", "/index", "/index.html",
-                    "/Login", "/Registro", "/Registro.html",
-                    "/DetalleTienda.html", "/tienda.html",
-                    "/noticias", "/noticias.html",
-                    "/Contacto", "/Contacto.html",
-                    
-                    "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
+                        "/", "/index", "/index.html",
+                        "/Login", "/Registro", "/Registro.html",
+                        "/Tienda", "/tienda", "/tienda.html",
+                        "/DetalleTienda", "/DetalleTienda.html",
+                        "/noticias", "/noticias.html",
+                        "/Contacto", "/Contacto.html",
+                        "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
                 ).permitAll()
                 // Zona admin
-                .requestMatchers("/admin/**","/adminUsuario",
-                        "/adminUsuario/**").hasRole("ADMIN")
-                // Todo lo demás requiere autenticación
+                .requestMatchers(
+                        "/admin/**",
+                        "/adminUsuario", "/adminUsuario/**",
+                        "/adminJuegos", "/adminJuegos/**"
+                ).hasRole("ADMIN")
+                // Carrito (requiere login)
+                .requestMatchers("/Carrito", "/carrito", "/carrito/**").authenticated()
+                // Lo demás, autenticado
                 .anyRequest().authenticated()
-            )
-            // Login form
-            .formLogin(form -> form
-                .loginPage("/Login").permitAll()   // tu página de login (GET)
-                .loginProcessingUrl("/login")      // endpoint que procesa el POST
-                .successHandler(successHandler)    // ← redirige a /admin si es ADMIN, a / si no
+                )
+                // Login form
+                .formLogin(form -> form
+                .loginPage("/Login").permitAll() // GET /Login (vista)
+                .loginProcessingUrl("/login") // POST /login (procesa creds)
+                .successHandler(successHandler) // redirige /admin o /
                 .failureUrl("/Login?error=true")
-            )
-            // Logout
-            .logout(logout -> logout
+                )
+                // Logout
+                .logout(logout -> logout
                 .logoutUrl("/logout")
                 .logoutSuccessUrl("/Login?logout")
                 .deleteCookies("JSESSIONID")
                 .invalidateHttpSession(true)
                 .permitAll()
-            )
-            // Proveedor de autenticación
-            .authenticationProvider(authenticationProvider());
+                )
+                // Proveedor de autenticación
+                .authenticationProvider(authenticationProvider());
 
         // CSRF habilitado por defecto (correcto para formularios)
         return http.build();
