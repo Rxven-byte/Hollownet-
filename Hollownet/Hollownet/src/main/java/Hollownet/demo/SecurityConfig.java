@@ -43,28 +43,22 @@ public class SecurityConfig {
                 .requestMatchers(
                         "/", "/index", "/index.html",
                         "/Login", "/Registro", "/Registro.html",
-                        "/Tienda", "/tienda", "/tienda.html",
-                        "/DetalleTienda", "/DetalleTienda.html",
+                        "/DetalleTienda.html", "/tienda.html",
                         "/noticias", "/noticias.html",
-                        "/Contacto", "/Contacto.html",
+                        "/Contacto", "/Contacto.html", "/adminContacto", "/adminContacto/**",
                         "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
                 ).permitAll()
                 // Zona admin
-                .requestMatchers(
-                        "/admin/**",
-                        "/adminUsuario", "/adminUsuario/**",
-                        "/adminJuegos", "/adminJuegos/**"
-                ).hasRole("ADMIN")
-                // Carrito (requiere login)
-                .requestMatchers("/Carrito", "/carrito", "/carrito/**").authenticated()
-                // Lo demás, autenticado
+                .requestMatchers("/admin/**", "/adminUsuario", "/adminUsuario/**",
+                        "/adminJuegos", "/adminJuegos/**").hasRole("ADMIN")
+                // Todo lo demás requiere autenticación
                 .anyRequest().authenticated()
                 )
                 // Login form
                 .formLogin(form -> form
-                .loginPage("/Login").permitAll() // GET /Login (vista)
-                .loginProcessingUrl("/login") // POST /login (procesa creds)
-                .successHandler(successHandler) // redirige /admin o /
+                .loginPage("/Login").permitAll() // tu página de login (GET)
+                .loginProcessingUrl("/login") // endpoint que procesa el POST
+                .successHandler(successHandler) // ← redirige a /admin si es ADMIN, a / si no
                 .failureUrl("/Login?error=true")
                 )
                 // Logout

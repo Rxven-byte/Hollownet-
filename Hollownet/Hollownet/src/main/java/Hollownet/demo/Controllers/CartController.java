@@ -123,7 +123,7 @@ public class CartController {
                 try {
                     if (mailSender != null) {
                         var msg = new org.springframework.mail.SimpleMailMessage();
-                        msg.setTo("test@hollownet.local"); // Mailtrap: puede ser cualquiera
+                        msg.setTo("test@hollownet.local"); 
                         msg.setSubject("HollowNet - Confirmación de compra (simulación)");
                         msg.setText(body);
                         mailSender.send(msg);
