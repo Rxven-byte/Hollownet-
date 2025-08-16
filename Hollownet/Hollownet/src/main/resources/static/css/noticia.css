@@ -1,0 +1,121 @@
+            body {
+                background-color: #130344;
+                color: #ffffff;
+                font-family: Arial, sans-serif;
+            }
+
+            header {
+                background-color: #1D124D;
+            }
+
+            .site-title {
+                color: #ffffff;
+            }
+
+            .nav-link {
+                color: #ffffff !important;
+            }
+
+            .card {
+                width: 100%;
+                background-color: #1a1433;
+                border: none;
+                box-shadow: 0 0 10px rgba(0,0,0,0.5);
+                margin-bottom: 1.5rem;
+                padding: 5px;
+                margin: 10px;
+                min-width: 2000px;
+                max-width: 2000px;
+                margin-left: auto;
+                margin-right: auto;
+            }
+
+            .card-title {
+                color: #ffffff;
+                text-align: left;
+                font-size: 40px;
+                font-weight: bold;
+            }
+            
+            .card-date {
+                color: #ffffff;
+                text-align: left;
+                font-size: 20px;
+                padding: 15px;
+            }
+
+            .card-text {
+                color: #cccccc;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 20px;
+            }
+            /*
+            .card-subtitle {
+                color: #cccccc;
+                text-align: left;
+                margin-bottom: 5px;
+                font-size: 24px;
+            }*/
+
+            .card img {
+              
+                
+                
+                min-width: 960px;
+                min-height: 311px;
+                max-width: 960px;
+                max-height: 311px;
+                /*
+                min-width: 820px;
+                min-height: 350px;
+                max-width: 820px;
+                max-height: 350px;*/
+                /*
+                min-width: 480px;
+                min-height: 270px;
+                max-width: 480px;
+                max-height: 270px;
+                padding: 5px;*/
+
+                object-fit: cover;
+            }
+
+            .custom-modal-size {
+                max-width: 55vw; /* 95% del ancho del viewport */
+                height: 80vh;     /* 95% de la altura del viewport */
+            }
+            .modal-content {
+                height: 100%;
+            }
+
+
+            .logo {
+                height: 40px;
+            }
+
+            .bg-two-tone-dark {
+                background: linear-gradient(to bottom, #343a40 50%, #212529 50%); /* Ajusta los colores si quieres otros grises */
+            }
+
+            /* Estilos opcionales para la tarjeta de la noticia que abre el modal */
+            .news-card {
+                background-color: #212529; /* Fondo oscuro para la tarjeta */
+                color: white;
+                padding: 20px;
+                margin: 50px auto;
+                max-width: 800px;
+                border-radius: 8px;
+                cursor: pointer; /* Indica que es clickeable */
+                box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            }
+
+            .news-card:hover {
+                box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+            }
+            .bg-two-tone-dark {
+                background: linear-gradient(to bottom, #343a40 50%, #212529 50%);
+            }
+            
+            
+            

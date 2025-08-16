@@ -1,0 +1,74 @@
+/* binvenida */
+
+.hero {
+    min-height: 70vh;
+    background-image: url('../images/fondoc.jpg');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 60px 20px;
+    text-align: center;
+    overflow: hidden;
+}
+
+.hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1;
+}
+
+.hero-content.vertical {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 30px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.hero-text {
+    max-width: 600px;
+    text-align: center;
+    color: white;
+}
+
+.hero h2 {
+    font-family: 'Press Start 2P', monospace;
+    font-size: 1.4em;
+    margin-bottom: 20px;
+    color: white;
+}
+
+.hero p {
+    font-size: 1em;
+    line-height: 1.6;
+    margin-bottom: 20px;
+    color: #ffffff;
+}
+
+.boton-ir-tienda {
+    display: inline-block;
+    margin-top: 10px;
+    padding: 12px 22px;
+    background-color: #621FBE;
+    color: white;
+    font-weight: bold;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 14px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.boton-ir-tienda:hover {
+    background-color: #4b16a3;
+    transform: translateY(-2px);
+}

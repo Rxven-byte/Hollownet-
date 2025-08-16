@@ -1,0 +1,77 @@
+/* Paleta de colores principal */
+body {
+    background-color: #130344;
+    color: #ffffff;
+    font-family: Arial, sans-serif;
+}
+
+/* Estilos para el encabezado y barra de navegación */
+header {
+    background-color: #1D124D;
+}
+
+.site-title {
+    color: #ffffff;
+}
+
+.nav-link {
+    color: #ffffff !important;
+}
+
+.main-content {
+    display: flex; /* Habilita Flexbox */
+    justify-content: center; /* Centra el contenido horizontalmente */
+    align-items: center; /* Centra el contenido verticalmente */
+    min-height: calc(100vh - 56px); /* Ajusta la altura para ocupar todo el espacio restante */
+    padding: 20px;
+}
+
+/* Contenedor principal para el formulario */
+.container {
+    background-color: #1a1433;
+    border-radius: 8px;
+    padding: 30px;
+    box-shadow: 0 0 15px rgba(0, 0, 0, 0.5);
+    max-width: 1000px;
+}
+
+/* Estilos para el título principal */
+.container h1 {
+    color: #ffffff;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Estilos para las etiquetas del formulario */
+.form-label {
+    color: #cccccc;
+    font-weight: bold;
+}
+
+/* Estilos para los campos de entrada y el área de texto */
+.form-control {
+    background-color: #212529;
+    border: 1px solid #343a40;
+    color: #ffffff;
+}
+
+.form-control:focus {
+    background-color: #212529;
+    border-color: #5d5d81;
+    color: #ffffff;
+    box-shadow: 0 0 0 0.25rem rgba(93, 93, 129, 0.25);
+}
+
+/* Estilos para el botón de envío */
+.btn-primary {
+    background-color: #5d5d81;
+    border-color: #5d5d81;
+    color: #ffffff;
+    font-weight: bold;
+    transition: background-color 0.3s ease;
+}
+
+.btn-primary:hover {
+    background-color: #4b4b6d;
+    border-color: #4b4b6d;
+}

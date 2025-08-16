@@ -1,3 +1,5 @@
+
+
 package Hollownet.demo;
 
 import Hollownet.demo.Services.UserService;
@@ -44,13 +46,21 @@ public class SecurityConfig {
                         "/", "/index", "/index.html",
                         "/Login", "/Registro", "/Registro.html",
                         "/DetalleTienda.html", "/tienda.html",
-                        "/noticias", "/noticias.html",
+                        // Correcto: Ahora la lista de noticias también es pública
+                        "/Noticias/**",
                         "/Contacto", "/Contacto.html", "/adminContacto", "/adminContacto/**",
                         "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
                 ).permitAll()
                 // Zona admin
-                .requestMatchers("/admin/**", "/adminUsuario", "/adminUsuario/**",
+                        
+                .requestMatchers("/admin/**", "/adminUsuario", "/adminUsuario/**","/AdminNoticias", "/AdminNoticias/**", "/Noticias/**", "/adminNoticias/**", "/adminNoticias", "/noticias/**", "/gestionar/**",
                         "/adminJuegos", "/adminJuegos/**").hasRole("ADMIN")
+                        
+                        
+                        
+                        
+                        
+                        
                 // Todo lo demás requiere autenticación
                 .anyRequest().authenticated()
                 )
