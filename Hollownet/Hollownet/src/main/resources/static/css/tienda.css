@@ -1,105 +1,58 @@
-body {
-  background-color: #130344;
-  color: white;
-  font-family: 'Segoe UI', sans-serif;
-  padding-top: 110px;
-  text-align: center;
-}
+        body {
+            background-color: #0e0331;
+            font-family: 'Segoe UI', sans-serif;
+            color: #fff;
+        }
 
-.destacado {
-  padding: 40px 20px;
-}
+        .card {
+            background-color: #1a103d;
+            border-radius: 15px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+            margin-bottom: 20px;
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            max-width: 1100px;
+            width: 100%;
+        }
 
-.juego-destacado {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: center;
-  align-items: center;
-  background: white;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-  padding: 20px;
-  gap: 20px;
-  max-width: 800px;
-  margin: auto;
-  color: #130344;
-}
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.7);
+        }
 
-.juego-destacado img {
-  width: 220px;
-  border-radius: 12px;
-}
+        .card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin-bottom: 0.5rem;
+        }
 
-.juego-destacado .info {
-  max-width: 400px;
-  text-align: left;
-}
+        .card-text {
+            font-size: 1rem;
+            color: #ccc;
+        }
 
-.precio-descuento {
-  font-weight: bold;
-  font-size: 1.1em;
-}
+        .price-pill {
+            display: inline-block;
+            background: linear-gradient(135deg, #6a11cb, #2575fc);
+            color: white;
+            padding: 0.3rem 0.8rem;
+            border-radius: 50px;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
 
-.oferta {
-  color: red;
-  margin-left: 10px;
-}
+        .game-img {
+            border-radius: 12px;
+            object-fit: cover;
+            transition: transform 0.3s ease-in-out;
+            border: 3px solid #2d1a63;
+        }
 
-.boton-comprar {
-  display: inline-block;
-  background-color: #621FBE;
-  color: white;
-  padding: 8px 16px;
-  border-radius: 6px;
-  margin-top: 10px;
-  font-weight: bold;
-  text-decoration: none;
-}
+        .game-img:hover {
+            transform: scale(1.05);
+        }
 
-.boton-comprar:hover {
-  background-color: #3a1391;
-}
-
-.catalogo {
-  padding: 40px 20px;
-}
-
-.catalogo h2 {
-  color: #A584E8;
-  margin-bottom: 30px;
-}
-
-.juegos-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-  gap: 20px;
-  max-width: 1000px;
-  margin: auto;
-}
-
-.juego-card {
-  background: white;
-  border-radius: 10px;
-  padding: 16px;
-  text-align: center;
-  color: #130344;
-  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-  transition: transform 0.2s ease;
-}
-
-.juego-card:hover {
-  transform: translateY(-5px);
-}
-
-.juego-card img {
-  width: 100%;
-  height: 140px;
-  object-fit: cover;
-  border-radius: 6px;
-  margin-bottom: 10px;
-}
-
-.juego-card .precio {
-  font-weight: bold;
-  margin: 8px 0;
-}
+        .modal-content {
+            border-radius: 20px;
+            background-color: #1a103d;
+        }

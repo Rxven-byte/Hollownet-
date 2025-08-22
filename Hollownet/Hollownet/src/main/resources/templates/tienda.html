@@ -1,306 +1,114 @@
 <!DOCTYPE html>
 <html lang="es" xmlns:th="http://www.thymeleaf.org" xmlns:sec="http://www.thymeleaf.org/extras/spring-security">
-    <head>
-        <meta charset="UTF-8" />
-        <title>Tienda - HollowNet</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1" />
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tienda - HollowNet</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Segoe+UI&display=swap" rel="stylesheet">
+    <link rel="stylesheet" th:href="@{/css/header.css}">
+    <link rel="stylesheet" th:href="@{/css/new.css}">
+    <link rel="stylesheet" th:href="@{/css/noticia.css}">
+    <link rel="stylesheet" th:href="@{/css/tienda.css}">
 
-        <!-- CSS -->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"/>
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons/font/bootstrap-icons.css" rel="stylesheet"/>
-        <link rel="stylesheet" href="css/header.css"/>
+ 
+</head>
+<body>
 
-        <style>
-            body{
-                margin:0;
-                background:#130344;
-                color:#fff;
-                font-family:'Segoe UI',sans-serif
-            }
-            .container-narrow{
-                max-width:1000px;
-                margin:100px auto 60px;
-                padding:0 16px
-            }
-            .card{
-                background:rgba(26,11,45,.85);
-                border:2px solid #2c0f6e;
-                border-radius:16px;
-                color:#fff
-            }
-            .card img.cover,.card img{
-                border-radius:12px;
-                max-height:260px;
-                object-fit:cover
-            }
-            .price-pill{
-                display:inline-block;
-                background:#5b2bbd;
-                border-radius:999px;
-                padding:.25rem .6rem;
-                margin-left:.5rem;
-                font-weight:700
-            }
-            .bg-two-tone-dark{
-                background:linear-gradient(180deg,rgba(20,8,46,.98),rgba(12,3,35,.98))
-            }
-            .modal-content{
-                border:2px solid #2c0f6e;
-                border-radius:16px;
-                color:#fff
-            }
-            .btn-cart-lg{
-                background:#5b2bbd;
-                border:none;
-                border-radius:999px;
-                color:#fff;
-                padding:.35rem .8rem
-            }
-            .modal-body-compact{
-                display:grid;
-                grid-template-columns:340px 1fr;
-                gap:18px
-            }
-            .modal-body-compact img.cover{
-                width:100%;
-                height:100%;
-                max-height:360px;
-                object-fit:cover;
-                border-radius:12px
-            }
-            .desc-clamp{
-                -webkit-line-clamp:6;
-                display:-webkit-box;
-                -webkit-box-orient:vertical;
-                overflow:hidden
-            }
-            @media (max-width: 992px){
-                .modal-body-compact{
-                    grid-template-columns:1fr
-                }
-            }
-            .form-label,.form-check-label{
-                color:#fff!important
-            }
-            .cart-link{
-                position:relative;
-                display:inline-flex;
-                align-items:center;
-                gap:.35rem;
-            }
-            .cart-badge{
-                position:absolute;
-                top:-6px;
-                right:-10px;
-                background:#dc3545;
-                color:#fff;
-                font-size:.7rem;
-                border-radius:999px;
-                padding:.1rem .35rem;
-            }
-        </style>
-    </head>
-    <body>
-        <!-- ===== HEADER unificado ===== -->
-        <div th:replace="Header :: EncabezadoSty"></div>
-        <header th:replace="Header :: Encabezado"></header>
+<header th:replace="Header :: Encabezado"></header>
 
-        <main class="container-narrow">
-            <h2 class="h4 mb-3">Catálogo</h2>
+<main class="container mt-4">
+    <h1 class="mb-4 text-center">Catálogo de Juegos</h1>
 
-            <!-- ===== MENSAJES de feedback (punto 3) ===== -->
-            <div th:if="${msg}" class="alert alert-success alert-dismissible fade show" role="alert">
-                <span th:text="${msg}">Mensaje ok</span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
-            </div>
-            <div th:if="${err}" class="alert alert-danger alert-dismissible fade show" role="alert">
-                <span th:text="${err}">Mensaje error</span>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Cerrar"></button>
+    <!-- Aquí está el each -->
+    <div th:each="juego : ${juegos}" class="d-flex justify-content-center">
+        <div class="card d-flex flex-row p-3 align-items-center">
+            <!-- Texto -->
+            <div class="flex-grow-1 pe-3"
+                 data-bs-toggle="modal"
+                 th:data-bs-target="'#modal' + ${juego.id}"
+                 style="cursor:pointer;">
+                <h3 class="card-title" th:text="${juego.titulo}">Título del Juego</h3>
+                <h4 class="text-info mb-2" th:text="${juego.categoria}">Categoría</h4>
+                <p class="card-text mb-2 fs-4" th:text="${juego.informacion}">Descripción</p>
+                <span class="price-pill fs-2" th:text="${'₡' + #numbers.formatInteger(juego.precio, 0)}">₡0</span>
+
             </div>
 
-            <!-- ===== LISTA DINÁMICA DE JUEGOS ===== -->
-            <div style="display:flex;flex-direction:column;gap:16px;">
-                <div style="display: flex; justify-content: center;" th:each="g, it : ${juegos}">
-                    <div class="card d-flex flex-row p-4 w-100">
-                        <!-- Texto: abre modal -->
-                        <div class="flex-grow-1 pe-3" style="cursor:pointer;"
-                             data-bs-toggle="modal"
-                             th:attr="data-bs-target=${'#modalGame-' + it.index}">
-                            <h5 class="card-title mb-1" th:text="${g.titulo}">Título</h5>
-                            <h6 class="mb-2 text-white-50" th:text="${g.categoria}">Categoría</h6>
-                            <p class="card-text mb-2 desc-clamp" th:text="${g.informacion}">Descripción...</p>
-                            <div>
-                                <span class="price-pill" th:text="${'₡' + #numbers.formatInteger(g.precio, 0)}">₡0</span>
-                            </div>
+            <!-- Imagen -->
+            <img th:src="${juego.imagen}"
+                 class="game-img"
+                 th:alt="${juego.titulo}"
+                 style="width:280px; height:170px; cursor:pointer;"
+                 data-bs-toggle="modal"
+                 th:data-bs-target="'#modal' + ${juego.id}">
+        </div>
+
+        <!-- Modal -->
+        <div class="modal fade"
+             th:id="'modal' + ${juego.id}"
+             tabindex="-1"
+             th:aria-labelledby="'modal' + ${juego.id} + 'Label'"
+             aria-hidden="true">
+            <div class="modal-dialog modal-xl modal-dialog-centered modal-dialog-scrollable" style="max-height: 90vh;">
+                <div class="modal-content text-white">
+                    <div class="modal-header">
+                        <h5 class="modal-title"
+                            th:id="'modal' + ${juego.id} + 'Label'"
+                            th:text="${juego.titulo}">
+                            Título del Modal
+                        </h5>
+                        <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"
+                                aria-label="Cerrar"></button>
+                    </div>
+                    <div class="modal-body text-start px-4 d-flex flex-column" style="min-height: auto; padding-bottom: 0;">
+                        <div style="flex: 0 0 auto;">
+                            <img th:src="${juego.imagen}"
+                                 class="img-fluid mb-3"
+                                 th:alt="${juego.titulo}"
+                                 style="width: 100%; max-width: 1100px; height: auto;">
+
+                            <h5 class="card-title mt-3" th:text="${juego.titulo}">Título del Modal (repetido)</h5>
+                            <p class="card-subtitle" style="font-size: 1.3rem;" th:text="${juego.informacion}"></p>
                         </div>
 
-                        <!-- Imagen: también abre modal -->
-                        <img th:src="${g.imagen}" alt="Portada" class="ms-1"
-                             style="cursor:pointer;width:260px;height:160px;object-fit:cover;border-radius:12px"
-                             data-bs-toggle="modal"
-                             th:attr="data-bs-target=${'#modalGame-' + it.index}">
-                    </div>
+                        <div style="flex: 1 1 auto; margin-top: auto; padding-top: 30px;">
+                            <p class="card-text mb-4" style="color: #ccc;" th:text="${juego.informacion}"></p>
 
-                    <!-- ===== MODAL por juego ===== -->
-                    <div class="modal fade" th:id="${'modalGame-' + it.index}" tabindex="-1" aria-hidden="true">
-                        <div class="modal-dialog modal-xl modal-dialog-centered">
-                            <div class="modal-content bg-two-tone-dark">
-                                <div class="modal-header flex-wrap gap-2">
-                                    <h5 class="modal-title me-auto" th:text="${g.titulo}">Título</h5>
+                            <div th:if="${juego.stock > 0 and juego.activo}">
+                                <form th:action="@{/carrito/agregar/{id}(id=${juego.id})}" method="post" class="d-inline">
+                                    <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
+                                    <button type="submit" class="btn btn-cart-lg">
+                                        <i class="bi bi-cart-plus me-1"></i> Agregar al carrito
+                                    </button>
+                                </form>
+                            </div>
+                            <span th:if="${juego.stock <= 0 or !juego.activo}" class="badge bg-danger ms-2">
+                                Sin stock
+                            </span>
 
-                                    <span class="price-pill" th:text="${'₡' + #numbers.formatInteger(g.precio, 0)}">₡0</span>
-
-                                    <!-- Botón agregar al carrito (POST con CSRF) -->
-                                    <div th:if="${g.stock > 0 and g.activo}">
-                                        <form th:action="@{/carrito/agregar/{id}(id=${g.id})}" method="post" class="d-inline">
-                                            <input type="hidden" th:name="${_csrf.parameterName}" th:value="${_csrf.token}"/>
-                                            <button type="submit" class="btn btn-cart-lg">
-                                                <i class="bi bi-cart-plus me-1"></i> Agregar al carrito
-                                            </button>
-                                        </form>
-                                    </div>
-                                    <span th:if="${g.stock <= 0 or !g.activo}" class="badge bg-danger ms-2">
-                                        Sin stock
-                                    </span>
-
-                                    <button type="button" class="btn-close btn-close-white ms-2" data-bs-dismiss="modal" aria-label="Cerrar"></button>
-                                </div>
-
-                                <div class="modal-body modal-body-compact">
-                                    <div>
-                                        <img th:src="${g.imagen}" class="cover" alt="Portada">
-                                    </div>
-
-                                    <div class="meta">
-                                        <p><small>CATEGORÍA</small><br><strong th:text="${g.categoria}">Categoría</strong></p>
-
-                                        <hr class="text-white-50 my-3">
-
-                                        <p class="desc-clamp" th:text="${g.informacion}">Descripción...</p>
-
-                                        <!-- Botón para mostrar el tráiler (si hay video) -->
-                                        <button th:if="${g.video != null and !#strings.isEmpty(g.video)}"
-                                                class="btn btn-outline-light btn-sm trailer-toggle" type="button"
-                                                th:attr="data-bs-target=${'#tr-' + it.index}" data-bs-toggle="collapse" aria-expanded="false">
-                                            <i class="bi bi-play-circle me-1"></i> Ver tráiler
-                                        </button>
-                                    </div>
-                                </div>
-
-                                <!-- Contenedor del tráiler -->
-                                <div class="collapse px-4 pb-4" th:id="${'tr-' + it.index}">
-                                    <div class="ratio ratio-16x9" th:if="${g.video != null and !#strings.isEmpty(g.video)}">
-                                        <!-- Guardamos la URL original en data-video y dejamos src vacío: se setea al abrir -->
-                                        <iframe class="trailer"
-                                                th:attr="data-video=${g.video}"
-                                                src=""
-                                                title="Trailer" frameborder="0"
-                                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-                                                referrerpolicy="strict-origin-when-cross-origin" allowfullscreen>
-                                        </iframe>
-                                    </div>
-                                </div>
-
+                            <div class="ratio ratio-16x9 mb-3"
+                                 th:if="${juego.video != null and !#strings.isEmpty(juego.video)}">
+                                <iframe th:src="${juego.video}"
+                                        title="Trailer"
+                                        frameborder="0"
+                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                                        referrerpolicy="strict-origin-when-cross-origin"
+                                        allowfullscreen>
+                                </iframe>
                             </div>
                         </div>
                     </div>
-                    <!-- /MODAL -->
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+                    </div>
                 </div>
             </div>
+        </div>
+    </div>
+</main>
 
-            <!-- VACÍO -->
-            <div class="text-center text-white-50 py-4" th:if="${#lists.isEmpty(juegos)}">No hay juegos disponibles.</div>
-        </main>
-
-        <!-- JS -->
-        <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
-
-        <!-- ===== Normalizar URLs de YouTube y setear src al abrir ===== -->
-        <script>
-            function unescapeHtml(s) {
-                return (s || '')
-                        .replace(/&amp;/g, '&')
-                        .replace(/&lt;/g, '<')
-                        .replace(/&gt;/g, '>')
-                        .replace(/&quot;/g, '"')
-                        .replace(/&#39;/g, "'");
-            }
-            function normalizeUrl(raw) {
-                let url = unescapeHtml(('' + (raw || '')).trim());
-                if (!url)
-                    return null;
-                if (url.startsWith('//'))
-                    url = 'https:' + url;
-                if (!/^https?:\/\//i.test(url))
-                    url = 'https://' + url;
-                return url;
-            }
-            function ytEmbed(raw) {
-                const url = normalizeUrl(raw);
-                if (!url)
-                    return null;
-                try {
-                    const u = new URL(url);
-                    const host = u.hostname.replace(/^m\./, '');
-                    if (host.includes('youtu.be')) {
-                        const id = u.pathname.slice(1);
-                        if (id)
-                            return 'https://www.youtube.com/embed/' + id;
-                    }
-                    if (host.includes('youtube.com')) {
-                        if (u.pathname === '/watch') {
-                            const id = u.searchParams.get('v');
-                            if (id)
-                                return 'https://www.youtube.com/embed/' + id;
-                        }
-                        if (u.pathname.startsWith('/shorts/')) {
-                            const id = u.pathname.split('/')[2];
-                            if (id)
-                                return 'https://www.youtube.com/embed/' + id;
-                        }
-                        if (u.pathname.startsWith('/embed/'))
-                            return url;
-                    }
-                } catch {
-                }
-                return url; // fallback
-            }
-
-            // Setear src cuando se ABRE el colapsable
-            document.querySelectorAll('.collapse').forEach(col => {
-                col.addEventListener('shown.bs.collapse', function () {
-                    const iframe = this.querySelector('iframe.trailer');
-                    if (!iframe)
-                        return;
-                    if (!iframe.src) {
-                        const emb = ytEmbed(iframe.dataset.video);
-                        if (emb)
-                            iframe.src = emb + (emb.includes('?') ? '&' : '?') + 'rel=0';
-                    }
-                });
-                // Limpiar src al cerrar para detener el video
-                col.addEventListener('hidden.bs.collapse', function () {
-                    const iframe = this.querySelector('iframe.trailer');
-                    if (iframe)
-                        iframe.src = '';
-                });
-            });
-
-            // Extra: por si el colapsable ya estaba abierto al abrir el modal
-            document.querySelectorAll('.modal').forEach(modal => {
-                modal.addEventListener('shown.bs.modal', function () {
-                    this.querySelectorAll('.collapse.show iframe.trailer').forEach(iframe => {
-                        if (!iframe.src && iframe.dataset.video) {
-                            const emb = ytEmbed(iframe.dataset.video);
-                            if (emb)
-                                iframe.src = emb + (emb.includes('?') ? '&' : '?') + 'rel=0';
-                        }
-                    });
-                });
-                modal.addEventListener('hidden.bs.modal', function () {
-                    this.querySelectorAll('iframe.trailer').forEach(f => f.src = '');
-                });
-            });
-        </script>
-    </body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
 </html>

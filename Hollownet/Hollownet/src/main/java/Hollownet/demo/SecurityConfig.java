@@ -46,14 +46,13 @@ public class SecurityConfig {
                         "/", "/index", "/index.html",
                         "/Login", "/Registro", "/Registro.html",
                         "/DetalleTienda.html", "/tienda.html",
-                        // Correcto: Ahora la lista de noticias también es pública
-                        "/Noticias/**",
+                        "/Noticias/**", "/noticias/**",
                         "/Contacto", "/Contacto.html", "/adminContacto", "/adminContacto/**",
                         "/css/**", "/js/**", "/images/**", "/webjars/**", "/favicon.ico"
                 ).permitAll()
                 // Zona admin
                         
-                .requestMatchers("/admin/**", "/adminUsuario", "/adminUsuario/**","/AdminNoticias", "/AdminNoticias/**", "/Noticias/**", "/adminNoticias/**", "/adminNoticias", "/noticias/**", "/gestionar/**",
+                .requestMatchers("/admin/**", "/adminUsuario", "/adminUsuario/**","/AdminNoticias", "/AdminNoticias/**", "/listaNoticias/**", "/adminNoticias/**", "/adminNoticias", "/gestionar/**",
                         "/adminJuegos", "/adminJuegos/**").hasRole("ADMIN")
                         
                         
